@@ -7,9 +7,9 @@ package com.neroarc.blog.myblog.constant;
  */
 public class SMSConstants {
 
-    public static String PRODUCT = "Dysmsapi";
+    public static String PRODUCT = "***";
 
-    public static String DOMAIN = "dysmsapi.aliyuncs.com";
+    public static String DOMAIN = "***";
 
     public static String ACCESS_KEY_ID = "***";
 
