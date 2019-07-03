@@ -11,9 +11,9 @@ public class SMSConstants {
 
     public static String DOMAIN = "dysmsapi.aliyuncs.com";
 
-    public static String ACCESS_KEY_ID = "LTAIxifx25sizP8L";
+    public static String ACCESS_KEY_ID = "***";
 
-    public static String ACCESS_KEY_SECRET = "WIxxWN1NGLK6G4WEo5HlbCaocPuKVL";
+    public static String ACCESS_KEY_SECRET = "***";
 
 
 
