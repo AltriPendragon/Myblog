@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />-->
+    <title>Altri | 个人中心</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/head.css" th:href="@{/css/head.css}">
+    <link rel="stylesheet" href="../static/js/lib/pagination.css" th:href="@{/js/lib/pagination.css}">
+    <link rel="stylesheet" href="../static/css/user.css" th:href="@{/css/user.css}">
+</head>
+<body>
+    <header class="am-topbar nav-color-change">
+        <h1 class="am-topbar-brand">
+            <img class="am-round am-img-thumbnail am-circle" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.png">
+            <a href="#">Altri</a>
+        </h1>
+
+        <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+        <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li class="special-font"><a href="/"><span class="am-icon-home am-icon "></span>&nbsp;首页</a></li>
+                <li class="special-font"><a href="/archive"><span class="am-icon-arrows am-icon"></span>&nbsp;时光轴</a></li>
+                <li class="special-font"><a href="/leaveMessage"><span class="am-icon-magnet am-icon"></span>&nbsp;留言</a></li>
+                <li class="special-font"><a href="/space"><span class="am-icon-shield am-icon"></span>&nbsp;空间</a></li>
+                <li class="special-font"><a href="/link"><span class="am-icon-code am-icon"></span>&nbsp;友链</a></li>
+                <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
+            </ul>
+
+
+
+            <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
+                <a href="/edit"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
+            </div>
+
+
+            <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+                <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
+                    <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
+                    <ul class="am-dropdown-content">
+                        <li>
+                            <a href>个人主页</a>
+                        </li>
+                        <li>
+                            <a href="/logout">退出登录</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+                <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</a>
+                <!--<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</button>-->
+            </div>
+
+            <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+                <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">登录</a>
+            </div>
+
+
+
+        </div>
+    </header>
+    <div class="am-g">
+        <div class="page-container">
+            <div class="am-u-md-2">
+                <div class="left-nav">
+                    <div class="left-nav-title">
+                        个人中心
+                    </div>
+                    <div class="left-nav-list">
+                        <ul class="left-nav-menu">
+                            <li class="left-nav-item">
+                                <a class="nav-link user-info-choice">
+                                    <i class="am-icon-home"></i>
+                                    <span>个人资料</span>
+                                </a>
+                            </li>
+                            <li class="left-nav-item">
+                                <a class="nav-link reply-choice">
+                                    <i class="blog-icon">&#xe88e;</i>
+                                    <span>回复我的</span>
+                                </a>
+                            </li>
+                            <li class="left-nav-item">
+                                <a class="nav-link comment-information-choice">
+                                    <i class="blog-icon">&#xe776;</i>
+                                    <span>我的</span>
+                                </a>
+                            </li>
+                            <li class="left-nav-item" sec:authorize="hasAnyRole('ADMIN')">
+                                <a href="javascript:;" class="nav-link nav-link-toggle admin-all-choice">
+                                    <i class="blog-icon">&#xe84e;</i>
+                                    <span>管理员</span>
+                                    <i class="am-icon-angle-right left-nav-icon am-fr am-margin-right"></i>
+                                </a>
+                                <ul class="left-nav-sub-menu">
+                                    <li class="admin-comment-information-choice">
+                                        <a>
+                                            <i class="am-icon-angle-right"></i>
+                                            <span>评论</span>
+                                        </a>
+                                    </li>
+                                    <li class="admin-leave-message-choice">
+                                        <a>
+                                            <i class="am-icon-angle-right"></i>
+                                            <span>留言</span>
+                                        </a>
+                                    </li>
+                                    <li class="admin-link-choice">
+                                        <a>
+                                            <i class="am-icon-angle-right"></i>
+                                            <span>友链</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-md-10">
+                <div class="content-wrapper">
+
+                    <div class="userInfo am-animation-fade">
+                        <div>
+                            <div class="background-title-item">
+                                <div class="background-title">
+                                    <span class="am-icon-code"></span>
+                                    个人资料
+                                </div>
+                            </div>
+                            <div class="am-g">
+                                <div class="form-body">
+                                    <form class="am-form line-form">
+                                        <div class="am-form-group">
+                                            <div class="am-u-sm-3 head-img-text">头像:</div>
+                                            <div class="am-u-sm-9">
+                                                <div class="am-form-group am-form-file">
+                                                    <div class="user-head-img">
+                                                        <img src="" class="am-round">
+                                                    </div>
+                                                    <button class="am-btn am-btn-danger am-btn-sm am-btn-upload" type="button">
+                                                        <i class="am-icon-cloud-upload"></i>
+                                                        更改头像
+                                                    </button>
+                                                    <input id="upload-headImg" type="file" name="file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="am-form-group">
+                                            <label class="am-u-sm-3 am-form-label">
+                                                昵称:
+                                            </label>
+                                            <div class="am-u-sm-9">
+                                                <input type="text" placeholder="i魔" class="userInfo-input" id="user-name">
+                                            </div>
+                                        </div>
+                                        <div class="am-form-group">
+                                            <label class="am-u-sm-3 am-form-label">
+                                                手机:
+                                            </label>
+                                            <div class="am-u-sm-9">
+                                                <input type="text" placeholder="18227805311" class="userInfo-input" id="user-telephone" disabled="disabled">
+                                            </div>
+                                        </div>
+                                        <div class="am-form-group">
+                                            <label class="am-u-sm-3 am-form-label">
+                                                性别:
+                                            </label>
+                                            <div class="am-u-sm-9">
+                                                <label class="am-radio-inline sex-choice">
+                                                    <input type="radio" name="gender" value="1" data-am-ucheck checked>
+                                                    <span class="am-icon-male"></span>
+                                                </label>
+                                                <label class="am-radio-inline sex-choice">
+                                                    <input type="radio" name="gender" value="0" data-am-ucheck>
+                                                    <span class="am-icon-female"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="am-form-group">
+                                            <label class="am-u-sm-3 am-form-label">
+                                                个人信息:
+                                            </label>
+                                            <div class="am-u-sm-9">
+                                                <textarea placeholder="个人信息" class="user-info" id="user-info"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="am-form-group">
+                                            <div class="am-u-sm-3"></div>
+                                            <div class="am-u-sm-9">
+                                                <button class="am-btn am-btn-primary user-info-btn" type="button">保存</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="comment-information am-animation-slide-right" style="display: none">
+                        <div>
+                            <div class="background-title-item">
+                                <div class="background-title">
+                                    <span class="am-icon-code"></span>
+                                    @我的
+                                </div>
+                            </div>
+                            <div class="am-g">
+                                <ul class="comment-information-list">
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="reply-information am-animation-slide-right" style="display: none">
+                        <div>
+                            <div class="background-title-item">
+                                <div class="background-title">
+                                    <span class="am-icon-code"></span>
+                                    回复我的
+                                </div>
+                            </div>
+                            <div class="am-g">
+                                <ul class="comment-information-list">
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>i魔在文章<a href="">spring boot</a>中回复了我：你说得对</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>测试一下</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>测试一下</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>测试一下</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-comment-information am-animation-slide-right" style="display: none">
+                        <div>
+                            <div class="background-title-item">
+                                <div class="background-title">
+                                    <span class="am-icon-code"></span>
+                                    评论
+                                </div>
+                                <div class="clear-all-comment">
+                                    清空所有
+                                </div>
+                            </div>
+                            <div class="am-g">
+                                <ul class="comment-information-list">
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>i魔在文章<a href="">spring boot</a>中评论：你说得对</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>测试一下</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>测试一下</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-time">12分钟前</div>
+                                        <div class="comment-content-item">
+                                    <span class="notice-icon">
+                                        <i class="am-icon-bell-o"></i>
+                                    </span>
+                                            <span>测试一下</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admin-leave-message am-animation-slide-right" style="display: none" >
+                        <div>
+                            <div class="background-title-item">
+                                <div class="background-title">
+                                    <span class="am-icon-code"></span>
+                                    留言
+                                </div>
+                                <div class="clear-all-message">
+                                    清空所有
+                                </div>
+                            </div>
+                            <div class="am-g">
+                                <ul class="comment-information-list">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-link am-animation-slide-right" style="display: none">
+                        <div class="background-title-item">
+                            <div class="background-title">
+                                <span class="am-icon-code"></span>
+                                友链
+                            </div>
+                        </div>
+                        <div class="am-g">
+                            <div class="am-u-md-6">
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group-xs am-btn-group">
+                                        <button class="am-btn am-btn-default am-btn-success link-btn-add" type="button">
+                                            <span class="am-icon-plus"></span>
+                                            新增
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-danger link-btn-deleteAll" type="button">
+                                            <span class="am-icon-trash-o"></span>
+                                            删除
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="am-form">
+                            <table class="am-table table-main">
+
+                            </table>
+                        </form>
+
+                    </div>
+
+                    <div id="Pagination" class="pagination"></div>
+                    <div class="am-modal am-modal-no-btn edit-modal" tabindex="-1" id="edit-1">
+                        <div class="am-modal-dialog">
+                            <div class="am-modal-hd">友链
+                                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                            </div>
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">昵称/nickname</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="nickname" type="text" placeholder="昵称/nickname">
+                                    </div>
+                                </div>
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">介绍/introduce</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="introduce" type="text" placeholder="昵称/nickname">
+                                    </div>
+                                </div>
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">URL</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="url" type="text" placeholder="URL">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">头像/headImg</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="headImg" type="text" placeholder="头像/headImg">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group link-item-edit">
+                                    <div class="am-u-sm-9">
+                                        <button class="am-btn am-btn-primary" type="button">保存修改</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="am-modal am-modal-no-btn add-modal" tabindex="-1" id="add-1">
+                        <div class="am-modal-dialog">
+                            <div class="am-modal-hd">友链
+                                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                            </div>
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">昵称/nickname</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="nickname" type="text" placeholder="昵称/nickname">
+                                    </div>
+                                </div>
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">介绍/introduce</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="introduce" type="text" placeholder="介绍/introduce">
+                                    </div>
+                                </div>
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">URL</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="url" type="text" placeholder="URL">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group link-item-edit">
+                                    <label class="am-u-md-3">头像/headImg</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="headImg" type="text" placeholder="头像/headImg">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group link-item-add">
+                                    <div class="am-u-sm-9">
+                                        <button class="am-btn am-btn-primary" type="button">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="../static/js/background.js" th:src="@{/js/background.js}"></script>
+<script src="../static/layer/layer.js" th:src="@{/layer/layer.js}"></script>
+<script src="/js/lib/jquery.pagination.js"></script>
+<script src="../static/js/user.js" th:src="@{/js/user.js}"></script>
+</html>

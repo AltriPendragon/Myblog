@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+.pagination{
+	text-align: center;
+}
+
+.pagination a {
+    text-decoration: none;
+	border-color: #0e90d2;
+	padding: .5em 1em !important;
+}
+
+.pagination a:focus{
+	outline: none;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 0.1em 0.4em;
+    margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.pagination .current {
+	background-color: #0e90d2;
+    color: #fff;
+	/*border: 1px solid #AAE;*/
+	padding: .5em 1em;
+}
+
+.pagination .current.prev, .pagination .current.next{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+}
+

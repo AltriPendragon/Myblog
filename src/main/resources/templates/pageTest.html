@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/js/lib/pagination.css">
+    <link rel="stylesheet" href="../static/assets/css/amazeui.min.css">
+</head>
+<body>
+<div id="Pagination" class="pagination"></div>
+</body>
+<script src="../static/js/lib/jquery.min.js"></script>
+<script src="../static/js/lib/jquery.pagination.js"></script>
+<script>
+    $(function(){
+        //这是一个非常简单的demo实例，让列表元素分页显示
+        //回调函数的作用是显示对应分页的列表项内容
+        //回调函数在用户每次点击分页链接的时候执行
+        //参数page_index{int整型}表示当前的索引页
+        var initPagination = function() {
+            var num_entries = 8;
+            // 创建分页
+            $("#Pagination").pagination(num_entries, {
+                num_edge_entries: 1, //边缘页数
+                num_display_entries: 4, //主体页数
+                callback: pageSelectCallback,
+                items_per_page:1 ,//每页显示1项
+                prev_text : '上一页',
+                next_text : '下一页',
+            });
+        }();
+
+        function pageSelectCallback(page_index, jq){
+            return false;
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <title>Altri | 留言板</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/head.css" th:href="@{/css/head.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" href="../static/css/leaveMessage.css" th:href="@{/css/leaveMessage.css}">
+
+</head>
+<body>
+    <div class="container">
+        <header class="am-topbar nav-color-change">
+            <h1 class="am-topbar-brand">
+                <img class="am-round am-img-thumbnail am-circle" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.png">
+                <a href="/">Altri</a>
+            </h1>
+
+            <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li class="special-font"><a href="/"><span class="am-icon-home am-icon"></span>&nbsp;首页</a></li>
+                    <li class="special-font"><a href="/archive"><span class="am-icon-arrows am-icon"></span>&nbsp;时光轴</a></li>
+                    <li class="special-font"><a href="/leaveMessage"><span class="am-icon-magnet am-icon"></span>&nbsp;留言</a></li>
+                    <li class="special-font"><a href="/space"><span class="am-icon-shield am-icon"></span>&nbsp;空间</a></li>
+                    <li class="special-font"><a href="/link"><span class="am-icon-code am-icon"></span>&nbsp;友链</a></li>
+                    <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
+                </ul>
+
+
+
+                <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
+                    <a href="/edit"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
+                </div>
+
+
+                <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+                    <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
+                        <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
+                        <ul class="am-dropdown-content">
+                            <li>
+                                <a href="/user">个人主页</a>
+                            </li>
+                            <li>
+                                <a href="/logout">退出登录</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+                    <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">注册</a>
+                    <!--<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</button>-->
+                </div>
+
+                <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+                    <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">登录</a>
+                </div>
+
+
+
+            </div>
+        </header>
+        <div id="page" class="site">
+            <div class="pattern-wrap">
+                <div class="pattern-center">
+                    <div class="pattern-img"></div>
+                    <header class="pattern-header">
+                        <h1 class="title">留言板</h1>
+                    </header>
+                </div>
+            </div>
+            <div class="pattern-content-wrap">
+                <div id="content" class="site-content">
+                    <!--<div class="one-language">-->
+                    <!--<h1>一言</h1>-->
+                    <!--</div>-->
+                    <section class="comment-container">
+                        <div class="am-container">
+                            <div class="am-g">
+                                <div>
+                                    <p class="headline">
+                                        来说点什么吧
+                                    </p>
+
+
+                                </div>
+                                <div class="comment">
+                                    <div class="comment-edit">
+                                        <textarea placeholder="快来留言吧..." id="comment-content"></textarea>
+                                    </div>
+                                    <div class="comment-btn">
+                                        <button class="am-btn am-btn-secondary" id="comment-btn">在此留言</button>
+                                    </div>
+
+                                    <div class="am-divider"></div>
+                                    <hr>
+                                    <div class="comment-main">
+                                        <div class="comment-main-top">
+                                            <!--<h3>Comments |-->
+                                            <!--<span>1,234条评论</span>-->
+                                            <!--</h3>-->
+                                            <!--<div><p class="no-message">还没有任何伟论发表哦<span class="blog-icon">&#xe606;</span></p></div>-->
+                                        </div>
+                                        <div class="comment-main-list">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer">
+            <div style="text-align: center" class="foot-block">
+            <span>
+                © 2018-2019 范建鑫
+            </span>
+                <div>
+                    博客已运行
+                    <span class="tillTime"></span>
+                </div>
+                <div>蜀ICP备</div>
+                <div>川公网安备</div>
+            </div>
+
+            <div class="foot-block-say">
+                <span>相信就会存在<i class="blog-icon">&#xe600;</i></span>
+                <div>
+
+                    To the world,you are one person
+                </div>
+                <div>But to one person,you are the world</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="../static/js/leaveMessage.js" th:src="@{/js/leaveMessage.js}"></script>
+<script src="../static/js/lib/activate-power-mode.js" th:src="@{/js/lib/activate-power-mode.js}"></script>
+<script src="../static/js/timecount.js" th:src="@{/js/timecount.js}"></script>
+<script src="https://cdn.bootcss.com/layer/2.1/layer.js"></script>
+<script>
+    // 打字烟花
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+</script>
+</html>

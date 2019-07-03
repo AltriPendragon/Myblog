@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <link rel="stylesheet" href="/editTest/css/editormd.preview.min.css" />
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/editTest/css/editormd.min.css" />
+    <link rel="stylesheet" href="../static/css/head.css" th:href="@{/css/head.css}">
+    <link rel="stylesheet" href="../static/css/article.css" th:href="@{/css/article.css}">
+
+    <title>Altri | 文章</title>
+</head>
+<body>
+    <header class="am-topbar nav-color-change">
+    <h1 class="am-topbar-brand">
+        <img class="am-round am-img-thumbnail am-circle" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.png">
+        <a href="#">Altri</a>
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li class="special-font"><a href="/"><span class="am-icon-home am-icon"></span>&nbsp;首页</a></li>
+            <li class="special-font"><a href="/archive"><span class="am-icon-arrows am-icon"></span>&nbsp;时光轴</a></li>
+            <li class="special-font"><a href="/leaveMessage"><span class="am-icon-magnet am-icon"></span>&nbsp;留言</a></li>
+            <li class="special-font"><a href="/space"><span class="am-icon-shield am-icon"></span>&nbsp;空间</a></li>
+            <li class="special-font"><a href="/link"><span class="am-icon-code am-icon"></span>&nbsp;友链</a></li>
+            <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
+        </ul>
+
+
+
+        <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
+            <a href="/edit"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
+        </div>
+
+
+        <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+            <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
+                <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                    <li>
+                        <a href="/user">个人主页</a>
+                    </li>
+                    <li>
+                        <a href="/logout">退出登录</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+            <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">注册</a>
+            <!--<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</button>-->
+        </div>
+
+        <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+            <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">登录</a>
+        </div>
+
+
+
+    </div>
+</header>
+    <div class="am-container article-container">
+
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <div class="content">
+                    <div class="article">
+                        <div class="article-top display-none">
+                            <div class="article-meta">
+                                <span class="am-icon-edit article-meta-tag" sec:authorize="hasAnyRole('ADMIN')"></span>
+                            </div>
+                            <blockquote>
+                                <p><strong>为什么毁灭的是东京而不是整个世界呢？</strong></p>
+                                <span class="i-say-author">-&#45;&#45; Altri</span>
+                            </blockquote>
+                        </div>
+
+                        <div class="article-content">
+                            <div id="layout">
+                                <div id="test-editormd-view" class="editormd-preview-theme-dark">
+                                    <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-footer">
+                            <div class="other-articles">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment display-none">
+                        <div class="comment-edit">
+                            <textarea placeholder="来发表你的伟论吧..." id="comment-content"></textarea>
+                        </div>
+                        <div class="comment-btn">
+                            <button class="am-btn am-btn-secondary" id="comment-btn">我的伟论</button>
+                        </div>
+
+                       <div class="am-divider"></div>
+                        <hr>
+                        <div class="comment-main">
+                            <div class="comment-main-top">
+                            </div>
+                            <div class="comment-main-list">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/editTest/lib/marked.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/marked/0.6.2/marked.min.js"></script>-->
+<!--<script src="/editTest/lib/prettify.min.js"></script>-->
+<script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
+<!--<script src="/editTest/lib/raphael.min.js"></script>-->
+<script src="https://cdn.bootcss.com/raphael/2.2.8/raphael.min.js"></script>
+<!--<script src="/editTest/lib/underscore.min.js"></script>-->
+<script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+<!--<script src="/editTest/lib/sequence-diagram.min.js"></script>-->
+<script src="https://cdn.bootcss.com/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+<!--<script src="/editTest/lib/flowchart.min.js"></script>-->
+<script src="https://cdn.bootcss.com/flowchart/1.11.2/flowchart.min.js"></script>
+<script src="/editTest/lib/jquery.flowchart.min.js"></script>
+<script src="/editTest/editormd.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="https://cdn.bootcss.com/layer/2.1/layer.js"></script>
+<script src="../static/js/lib/activate-power-mode.js" th:src="@{/js/lib/activate-power-mode.js}"></script>
+<script src="../static/js/article.js" th:src="@{/js/article.js}"></script>
+<script>
+    // 打字烟花
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+</script>
+</html>

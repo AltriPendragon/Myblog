@@ -1,0 +1,133 @@
+
+
+@font-face {
+    font-family: 'blogicon';  /* project id 1022022 */
+    src: url('//at.alicdn.com/t/font_1022022_dbkgmansn1f.eot');
+    src: url('//at.alicdn.com/t/font_1022022_dbkgmansn1f.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1022022_dbkgmansn1f.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1022022_dbkgmansn1f.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1022022_dbkgmansn1f.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1022022_dbkgmansn1f.svg#blogicon') format('svg');
+}
+
+@media screen and (max-width: 640px){
+    .am-topbar{
+        background-color: rgba(26, 26, 26, .2)!important;
+    }
+}
+
+
+
+.am-topbar .am-text-ir{
+    display: block;
+    margin-right: 10px;
+    height: 50px;
+    width: 125px;
+    background: url(fjx.png) no-repeat left center;
+    -webkit-background-size: 125px 24px;
+    background-size: 125px 24px;
+}
+.am-topbar{
+    background-color: transparent;
+    border-bottom: 0 !important;
+    z-index: 20;
+    margin-bottom: 1.3rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.am-topbar-brand{
+    margin-right: 100px;
+    font-family: "Segoe UI";
+}
+
+.am-topbar img{
+    width: 45px;
+    height: 45px;
+    /*margin-left: 30px;*/
+    /*margin-bottom: 8px;*/
+    margin: 0px 10px 3px 10px;
+}
+
+.am-topbar a{
+    color: #ffffff;
+}
+
+.am-nav > li > a:focus, .am-nav > li > a:hover{
+    /*background-color: #0e90d2;*/
+    background-color: rgba(255,255,255,0.4);
+}
+
+.blog-icon{
+    font-family: blogicon;
+    font-size:26px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.mybutton{
+    outline: none!important;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+
+.am-round{
+    -webkit-transition: -webkit-transform 2s ease-out;
+    -moz-transition: -moz-transform 2s ease-out;
+    -o-transition: -o-transform 2s ease-out;
+    -ms-transition: -ms-transform 2s ease-out;
+}
+
+
+.am-round:hover{
+    -webkit-transform: rotateZ(360deg);
+    -moz-transform: rotateZ(360deg);
+    -o-transform: rotateZ(360deg);
+    -ms-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
+}
+
+a:focus{
+    outline: none;
+}
+
+
+
+.nav-color-change{
+    background: white;
+    box-shadow: #888888 0px 0px 2px;
+}
+
+.am-topbar-nav a{
+    color: #0e90d2;
+}
+
+.am-topbar-brand a{
+    color: #4d4d4d;
+}
+
+.write-blog a{
+    color: #0e90d2;
+}
+
+.write-blog{
+    margin-left: 8px;
+}
+
+.special-font{
+    font-family: 华文行楷;
+}
+
+.am-topbar-right{
+    margin-right: 0px;
+    padding-right: 10px;
+}
+
+.user-name-show{
+    padding-right: 5px;
+}

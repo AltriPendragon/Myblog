@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Altri | 关于我</title>
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/head.css" th:href="@{/css/head.css}">
+    <link  rel="stylesheet" href="../static/css/about.css" th:href="@{/css/about.css}">
+</head>
+<body>
+    <header class="am-topbar nav-color-change">
+    <h1 class="am-topbar-brand">
+        <img class="am-round am-img-thumbnail am-circle" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.png">
+        <a href="/">Altri</a>
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li class="special-font"><a href="/"><span class="am-icon-home am-icon"></span>&nbsp;首页</a></li>
+            <li class="special-font"><a href="/archive"><span class="am-icon-arrows am-icon"></span>&nbsp;时光轴</a></li>
+            <li class="special-font"><a href="/leaveMessage"><span class="am-icon-magnet am-icon"></span>&nbsp;留言</a></li>
+            <li class="special-font"><a href="/space"><span class="am-icon-shield am-icon"></span>&nbsp;空间</a></li>
+            <li class="special-font"><a href="/link"><span class="am-icon-code am-icon"></span>&nbsp;友链</a></li>
+            <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
+        </ul>
+
+
+
+        <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
+            <a href="/edit"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
+        </div>
+
+
+        <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+            <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
+                <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                    <li>
+                        <a href="/user">个人主页</a>
+                    </li>
+                    <li>
+                        <a href="/logout">退出登录</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+            <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">注册</a>
+            <!--<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</button>-->
+        </div>
+
+        <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+            <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">登录</a>
+        </div>
+
+
+
+    </div>
+</header>
+    <div id="page" class="site">
+        <div class="pattern-wrap">
+            <div class="pattern-center">
+                <div class="pattern-img"></div>
+                <header class="pattern-header">
+                    <h1 class="about-me">关于我</h1>
+                </header>
+            </div>
+
+        </div>
+        <div class="pattern-content-wrap">
+            <div id="content" class="site-content">
+                <div class="about-wrap">
+                    <div class="about about1">
+                        <h1><span>壹</span>关于我</h1>
+                        <p>目前就读于西南石油大学</p>
+                        <p>所属计算机科学学院物联网工程翼灵物联工作室</p>
+                        <p>一个没什么天分却很努力的人</p>
+                        <p>喜欢一切黑科技，技术的狂热爱好者</p>
+                        <p>喜欢一些听不懂的歌</p>
+                        <p>喜欢京都这个朦胧的城市</p>
+                        <p>喜欢看一些奇怪的书</p>
+                        <p>喜欢做一些奇怪的事</p>
+                        <p>喜欢温暖阳光下那颗大树下的草坪</p>
+                        <p>喜欢一些我也不清楚为什么那么喜欢的人</p>
+
+                    </div>
+
+                    <div class="about about2">
+                        <h1><span>贰</span>关于博客</h1>
+                        <p>这是我的一份记录</p>
+                        <p>一份成长的记录</p>
+                        <p>关于我的点点滴滴都将被记录在这里</p>
+                        <p>不是为了别人</p>
+                        <p>只是为了自己</p>
+                        <p>希望若干年后</p>
+                        <p>这个地方能够成为我最宝贵的净土</p>
+                        <p>做我想做的，说我想说的，写我想写的</p>
+                        <p>这就是我写这个博客的最初宗旨</p>
+                    </div>
+
+                    <div class="about about3">
+                        <h1><span>叁</span>写在最后</h1>
+
+                        <p>时光流转，愿相爱的人能够再次相见</p>
+                    </div>
+                </div>
+                <div class="about-time"><span>2019-5-21 17:23:22</span></div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="../static/js/magic/circleMagic.js" th:src="@{/js/magic/circleMagic.js}"></script>
+<script src="../static/js/about.js" th:src="@{/js/about.js}"></script>
+<script>
+    $('#page').circleMagic({
+        radius: 35,
+        density: .3,
+        color: 'rgba(255,255,255, .4)',
+        //color: 'random',
+        clearOffset: .3
+    });
+</script>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <title>Altri | 创作中心</title>
+        <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/editTest/examples/css/style.css" th:href="@{/editTest/examples/css/style.css}"/>
+        <link rel="stylesheet" href="../static/editTest/css/editormd.min.css" th:href="@{/editTest/css/editormd.min.css}"/>
+        <link rel="stylesheet" href="../static/css/edit.css" th:href="@{/css/edit.css}">
+        <!--<link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />-->
+
+        <style>
+
+            /*@font-face {*/
+                /*font-family: 'blogicon';  !* project id 1022022 *!*/
+                /*src: url('//at.alicdn.com/t/font_1022022_xg37a813pbl.eot');*/
+                /*src: url('//at.alicdn.com/t/font_1022022_xg37a813pbl.eot?#iefix') format('embedded-opentype'),*/
+                /*url('//at.alicdn.com/t/font_1022022_xg37a813pbl.woff2') format('woff2'),*/
+                /*url('//at.alicdn.com/t/font_1022022_xg37a813pbl.woff') format('woff'),*/
+                /*url('//at.alicdn.com/t/font_1022022_xg37a813pbl.ttf') format('truetype'),*/
+                /*url('//at.alicdn.com/t/font_1022022_xg37a813pbl.svg#blogicon') format('svg');*/
+            /*}*/
+
+
+            .container{
+                display: none;
+            }
+
+            .blog-icon{
+                /*font-family: blogicon;*/
+                /*font-size:26px;*/
+                /*font-style:normal;*/
+                /*-webkit-font-smoothing: antialiased;*/
+                /*-moz-osx-font-smoothing: grayscale;*/
+                width: 3em;
+                height: 2em;
+                vertical-align: -0.15em;
+                fill: currentColor;
+                overflow: hidden;
+            }
+
+            .pos-box{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate3d(-50%,-50%,0);
+                transform: translate3d(-50%,-50%,0);
+                z-index: 121;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                width: 600px;
+                height: auto;
+                border: none;
+                z-index: 9999;
+
+            }
+
+            .pos-top{
+                padding: 24px 24px 0;
+            }
+
+            .manage-article{
+                color: #3399ea;
+                font-size: 14px;
+                text-decoration: inherit;
+                text-align: left;
+            }
+
+            .article-info-box{
+                margin-top: 20px;
+                margin-bottom: 64px;
+                background-color: #f5f6f7;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .title{
+                font-size: 18px;
+                color: #474747;
+                margin-bottom: 8px;
+                padding-bottom: 0;
+
+                margin-top: 16px;
+
+                letter-spacing: 0;
+                line-height: 30px;
+                word-break: break-word!important;
+            }
+
+            .desc{
+                font-size: 14px;
+                color: #999;
+                margin: 8px 0;
+            }
+
+            .text{
+                font-size: 14px;
+                color: #6b6b6b;
+                text-align: right;
+            }
+
+            .status-box{
+                padding-bottom: 32px;
+                font-size: 18px;
+                letter-spacing: 0;
+                line-height: 24px;
+                text-align: center;
+            }
+
+            .status-box a{
+                color: #86ca5e;
+                text-decoration: inherit;
+                font-size: 14px;
+            }
+
+            .status-box i{
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin-right: 8px;
+                vertical-align: -4px;
+            }
+
+            .pos-bottom{
+                padding: 0 24px 24px;
+            }
+
+            .opt-box{
+                text-align: center;
+                font-size: 14px;
+                color: #999;
+            }
+
+            .container{
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 4444;
+                background-color: #f4f4f4;
+            }
+
+            .status-box-success a:hover{
+                text-decoration: underline;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id="layout">
+
+            <div class="article-bar">
+                <div class="article-input-box">
+                    <input maxlength="100" placeholder="请输入文章标题" class="article-input-text" id="article-title">
+                </div>
+
+                <div class="user-box">
+                    <button type="button" class="am-btn am-btn-secondary am-btn-danger publish" data-am-modal="{target: '#select-model', closeViaDimmer: 0, width: 580, height: 360}">发表博客</button>
+                </div>
+            </div>
+
+            <!--<header>-->
+                <!--<h1>Simple example</h1>-->
+            <!--</header>-->
+
+            <div class="am-modal am-modal-no-btn select-model" tabindex="-1" id="select-model">
+                <div class="am-modal-dialog">
+                    <div class="am-modal-hd">发布文章
+                        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                    </div>
+                    <hr>
+
+                    <div class="am-modal-bd">
+                        <div class="category-box model-category">
+                            <label class="article-tag">文章标签:</label>
+                            <div class="tag-list">
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">1</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag button-control"></button>-->
+                                <!--</div>-->
+
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">2</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag button-control"></button>-->
+                                <!--</div>-->
+                            </div>
+
+                            <div class="am-btn am-icon-plus-square add-tag button-control-type">&nbsp;&nbsp;添加标签</div>
+                        </div>
+
+                        <div class="category-box model-category">
+                            <label class="article-tag">个人分类:</label>
+
+                            <div class="type-list">
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">12</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag-type button-control"></button>-->
+                                <!--</div>-->
+
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">12</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag-type button-control"></button>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="am-btn am-icon-plus-square add-type add-tag-type button-control-type">&nbsp;&nbsp;添加分类</div>
+                        </div>
+
+                        <div class="category-box model-category">
+                            <label class="article-tag article-type-control">文章类型:</label>
+                            <div class="select-choice">
+                                <select class="text-field">
+                                    <!--<option value="0">请选择</option>-->
+                                    <option value="1">原创</option>
+                                    <option value="2">转载</option>
+                                    <option value="3">翻译</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!--<div class="article-tag model-category">文章标签</div>-->
+                        <!--<div class="article-category model-category">个人分类</div>-->
+                        <!--<div class="article-type model-category">文章类型</div>-->
+                    </div>
+
+                    <div class="model-button-bar article-buttons">
+                        <button class="am-btn am-btn-danger article-button article-cancel">取消</button>
+                        <button class="am-btn am-btn-primary article-button article-publish">发布文章</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="test-editormd">
+                <textarea style="display:none;" id="$id-markdown-code"></textarea>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="pos-box">
+                <div class="pos-top">
+                    <a class="manage-article">管理博文</a>
+                    <div class="article-info-box">
+                        <div class="title">HTTPS配置--基于nginx</div>
+                        <div class="desc">HTTPS配置–基于nginx
+
+                            前言：
+
+                            最近这个自己搭建的博客网站到了最后的上线调试阶段，将HTTPS加入自己的网站刻不容缓，于是就开始了征服星辰大海的旅程。
+
+                            一.领取阿里云免费证书
+
+                            登录阿里云，如果没有账号就注册一个，找到产品分类，安全，ssl证书
+
+                            选择免费型DV SSL购买，付费0元。购买之后会叫你补全信息，填写绑定的域名。
+
+                            绑定成功后会返回一些信息，将这些信息添加到你的域名解析中...</div>
+                        <div class="text">仗剑天涯，从你的摘要开始</div>
+                    </div>
+                    <div class="status-box">
+                        <a href="/">
+                            <svg class="blog-icon" aria-hidden="true">
+                                <use xlink:href="#icon-chenggong"></use>
+                            </svg>
+                            <div>发布成功并返回首页</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="pos-bottom">
+                    <div class="opt-box">
+                        <span class="share">分享到：</span>
+                        <span>
+                        <svg class="blog-icon" aria-hidden="true">
+                            <use xlink:href="#icon-QQ"></use>
+                        </svg>
+
+                        <svg class="blog-icon" aria-hidden="true">
+                            <use xlink:href="#icon-weixin"></use>
+                        </svg>
+
+                        <svg class="blog-icon" aria-hidden="true">
+                            <use xlink:href="#icon-weibo"></use>
+                        </svg>
+
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<script src="../static/editTest/examples/js/jquery.min.js" th:src="@{/editTest/examples/js/jquery.min.js}"></script>-->
+
+        <script src="//at.alicdn.com/t/font_1022022_xg37a813pbl.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+        <script src="../static/editTest/editormd.js" th:src="@{/editTest/editormd.js}"></script>
+        <script src="../static/js/edit.js" th:src="@{/js/edit.js}"></script>
+    </body>
+</html>

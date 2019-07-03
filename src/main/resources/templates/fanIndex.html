@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <!--<link rel="stylesheet" href="../static/assets/css/amazeui.min.css" th:href="@{/assets/css/amazeui.min.css}">-->
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/css/fanIndex.css" th:href="@{/css/fanIndex.css}">
+    <link rel="stylesheet" href="../static/dist/skPlayer.css" th:href="@{/dist/skPlayer.css}">
+    <link rel="stylesheet" href="../static/js/lib/pagination.css" th:href="@{/js/lib/pagination.css}">
+    <title>Altri | 首页</title>
+</head>
+<body>
+<header class="am-topbar">
+    <h1 class="am-topbar-brand">
+        <img class="am-round am-img-thumbnail am-circle" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.png">
+        <a href="/">Altri</a>
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li class="special-font"><a href="/"><span class="am-icon-home am-icon "></span>&nbsp;首页</a></li>
+            <li class="special-font"><a href="/archive"><span class="am-icon-arrows am-icon"></span>&nbsp;时光轴</a></li>
+            <li class="special-font"><a href="/leaveMessage"><span class="am-icon-magnet am-icon"></span>&nbsp;留言</a></li>
+            <li class="special-font"><a href="/space"><span class="am-icon-shield am-icon"></span>&nbsp;空间</a></li>
+            <li class="special-font"><a href="/link"><span class="am-icon-code am-icon"></span>&nbsp;友链</a></li>
+            <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
+        </ul>
+
+
+
+        <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
+            <a href="/edit" class="special-font"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
+        </div>
+
+
+        <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+            <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
+                <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                    <li>
+                        <a href="/user">个人主页</a>
+                    </li>
+                    <li>
+                        <a href="/logout">退出登录</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+            <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">注册</a>
+        </div>
+
+        <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+            <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">登录</a>
+        </div>
+
+
+
+    </div>
+</header>
+<div class="header-bg"></div>
+<div class="header-bg-1 head-bg-hidden">
+    <div class="header-down">
+        <span>
+            <i class="blog-icon">&#xe603;</i>
+        </span>
+    </div>
+</div>
+
+
+    <div class="am-g">
+        <div class="am-u-md-3 screen-introduction-hide">
+            <div class="am-divider"></div>
+            <div class="inner">
+                <div class="base-info">
+                    <img src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.jpg" class="am-round" width="90px" height="90px">
+                    <h2>范建鑫 | Altri</h2>
+                    <p>我们的相遇是很久以前就注定的命运</p>
+                    <div>
+                        <a href="https://github.com/AltriPendragon" class="am-btn am-btn-secondary am-animation-slide-left follow-btn">关注我</a>
+                    </div>
+                    <div class="article-tag-info">
+                        <div class="article-info-block"><div class="article-info-block-text">11</div><span>文章</span></div>
+                        <div class="tag-info-block"><div class="tag-info-block-text">11</div><span>标签</span></div>
+                    </div>
+
+                    <hr>
+                    <div class="icons">
+                        <div class="icon">
+                            <a href="https://github.com/AltriPendragon" class="am-icon-github am-icon-sm" data-am-popover="{content: 'github', trigger: 'hover focus'}"></a>
+                        </div>
+
+                        <div class="icon">
+                            <a href="https://gitee.com/altri/" data-am-popover="{content: '码云', trigger: 'hover focus'}"><i class="blog-icon blog-icon-ali">&#xe6d0;</i></a>
+                        </div>
+
+
+
+                        <div class="icon">
+                            <a href="https://blog.csdn.net/nero_claudius" data-am-popover="{content: 'CSDN', trigger: 'hover focus'}"><i class="blog-icon blog-icon-ali">&#xe64f;</i></a>
+                        </div>
+
+
+                        <div class="icon qq-icon">
+                            <a class="am-icon-qq am-icon-sm"></a>
+                            <img class="qq-img" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/qq.jpg">
+                        </div>
+
+                        <div class="icon">
+                            <a href="http://www.swpuiot.com" data-am-popover="{content: '翼灵物联工作室', trigger: 'hover focus'}"><img src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/winglingLogo.png" class="wingLingLogo"></a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="am-u-md-6">
+            <div class="articles">
+                <div class="am-divider"></div>
+                <div class="article">
+
+                    <div class="article-header">
+                        <a class="label" href="#"></a>
+
+                        <h2 class="article-title">&nbsp;&nbsp;<a href="#"></a> </h2>
+                        <span class="title-left"></span>
+
+                    </div>
+                    <img class="sticky-img">
+
+
+                    <div class="article-meta-top">
+                    </div>
+                    <div class="article-entry-content">
+                        <div class="article-content-static"></div>
+                    </div>
+
+                    <hr class="article-divider">
+                    <div class="article-meta-bottom">
+
+                        <span class="am-icon-calendar article-meta-tag"></span>
+                        <span class="am-icon-eye article-meta-tag"></span>
+                        <span class="am-icon-comment article-meta-tag"></span>
+                        <span class="am-icon-folder article-meta-tag"><a class="article-meta-tag-innerTag" href="#"></a></span>
+                        <span class="am-icon-tags article-meta-tag"><a href="#" class="article-meta-tag-innerTag"></a><a href="#" class="article-meta-tag-innerTag"></a></span>
+                        <span><a class="read-all" href="#">阅读全文</a></span>
+                    </div>
+                    <!--<div class="article-tags">sdfsdf</div>-->
+
+                </div>
+
+                <div class="am-divider"></div>
+                <div class="article">
+
+                    <div class="article-header">
+                        <a class="label" href="#"></a>
+
+                        <h2 class="article-title">&nbsp;&nbsp;<a href="#"></a> </h2>
+                        <span class="title-left"></span>
+
+                    </div>
+                    <img class="sticky-img">
+
+
+                    <div class="article-meta-top">
+                    </div>
+                    <div class="article-entry-content">
+                        <div class="article-content-static"></div>
+                    </div>
+
+                    <hr class="article-divider">
+                    <div class="article-meta-bottom">
+
+                        <span class="am-icon-calendar article-meta-tag"></span>
+                        <span class="am-icon-eye article-meta-tag"></span>
+                        <span class="am-icon-comment article-meta-tag"></span>
+                        <span class="am-icon-folder article-meta-tag"><a class="article-meta-tag-innerTag" href="#"></a></span>
+                        <span class="am-icon-tags article-meta-tag"><a href="#" class="article-meta-tag-innerTag"></a><a href="#" class="article-meta-tag-innerTag"></a></span>
+                        <span><a class="read-all" href="#">阅读全文</a></span>
+                    </div>
+                    <!--<div class="article-tags">sdfsdf</div>-->
+
+                </div>
+
+                <div class="am-divider"></div>
+                <div class="article">
+
+                    <div class="article-header">
+                        <a class="label" href="#"></a>
+
+                        <h2 class="article-title">&nbsp;&nbsp;<a href="#"></a> </h2>
+                        <span class="title-left"></span>
+
+                    </div>
+                    <img class="sticky-img">
+
+
+                    <div class="article-meta-top">
+                    </div>
+                    <div class="article-entry-content">
+                        <div class="article-content-static"></div>
+                    </div>
+
+                    <hr class="article-divider">
+                    <div class="article-meta-bottom">
+
+                        <span class="am-icon-calendar article-meta-tag"></span>
+                        <span class="am-icon-eye article-meta-tag"></span>
+                        <span class="am-icon-comment article-meta-tag"></span>
+                        <span class="am-icon-folder article-meta-tag"><a class="article-meta-tag-innerTag" href="#"></a></span>
+                        <span class="am-icon-tags article-meta-tag"><a href="#" class="article-meta-tag-innerTag"></a><a href="#" class="article-meta-tag-innerTag"></a></span>
+                        <span><a class="read-all" href="#">阅读全文</a></span>
+                    </div>
+                    <!--<div class="article-tags">sdfsdf</div>-->
+
+                </div>
+
+                <div class="am-divider"></div>
+                <div class="article">
+
+                    <div class="article-header">
+                        <a class="label" href="#"></a>
+
+                        <h2 class="article-title">&nbsp;&nbsp;<a href="#"></a> </h2>
+                        <span class="title-left"></span>
+
+                    </div>
+                    <img class="sticky-img">
+
+
+                    <div class="article-meta-top">
+                    </div>
+                    <div class="article-entry-content">
+                        <div class="article-content-static"></div>
+                    </div>
+
+                    <hr class="article-divider">
+                    <div class="article-meta-bottom">
+
+                        <span class="am-icon-calendar article-meta-tag"></span>
+                        <span class="am-icon-eye article-meta-tag"></span>
+                        <span class="am-icon-comment article-meta-tag"></span>
+                        <span class="am-icon-folder article-meta-tag"><a class="article-meta-tag-innerTag" href="#"></a></span>
+                        <span class="am-icon-tags article-meta-tag"><a href="#" class="article-meta-tag-innerTag"></a><a href="#" class="article-meta-tag-innerTag"></a></span>
+                        <span><a class="read-all" href="#">阅读全文</a></span>
+                    </div>
+                    <!--<div class="article-tags">sdfsdf</div>-->
+
+                </div>
+            </div>
+
+            <div class="am-divider"></div>
+            <div id="Pagination" class="pagination"></div>
+
+
+        </div>
+        <div class="am-u-md-3">
+
+            <div>
+                <div class="switch-btn am-icon-chevron-left am-btn" onclick="switchMusicBox()"></div>
+                <div id="skPlayer" class="music-box music-player music-box-hidden am-animation-slide-right"></div>
+            </div>
+
+            <div class="am-divider"></div>
+            <div class="two-language">
+                <div class="two-language-info">
+                    <i class="am-icon-quote-left"></i>
+                    <div class="two-language-content">
+                        <!--<p>山河远阔</p>-->
+                        <!--<p>无一是你</p>-->
+                        <!--<p>无一不是你</p>-->
+                        <!--<p>山河远阔，无一是你，无一不是你</p>-->
+
+                        <p>流云涌动</p>
+                        <p>太阳和月亮相逢</p>
+                        <p>此刻为约定之时</p>
+                        <p>梦的终结</p>
+                        <p>命运苏醒</p>
+                        <p>泪水满溢</p>
+                        <p>梦的终结</p>
+                        <p>那风安眠的拂晓之地</p>
+                    </div>
+                    <i class="am-icon-quote-right" style="float: right"></i>
+                </div>
+            </div>
+            <div class="one-language">
+                <div class="one-language-head">
+                    <span class="special-font">谈天说地</span>
+                </div>
+                <div class="one-language-content">
+                    <div class="inner-one-language-title">
+                        为什么毁灭的是东京，而不是世界呢?
+                    </div>
+
+                    <div class="inner-one-language-content">
+
+                    </div>
+
+                    <div class="inner-one-language-time">
+                        -- Feb 5th, 19:35 PM
+                    </div>
+                </div>
+            </div>
+            <div class="tags-cloud am-animation-slide-right" >
+                <header class="tags-cloud-header">
+                    <h1 class="tags-cloud-title">TagsCloud</h1>
+                </header>
+                <div class="tag-cloud-items"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <div class="footer">
+        <hr>
+        <div style="text-align: center" class="foot-block">
+            <span>
+                © 2018-2019 范建鑫
+            </span>
+            <div>
+                博客已运行
+                <span class="tillTime"></span>
+            </div>
+            <div>蜀ICP备</div>
+            <div>川公网安备</div>
+        </div>
+
+        <div class="foot-block-say">
+            <span>相信就会存在<i class="blog-icon">&#xe600;</i></span>
+            <div>
+
+                To the world,you are one person
+            </div>
+            <div>But to one person,you are the world</div>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<!--<script src="../static/assets/js/amazeui.min.js" th:src="@{/assets/js/amazeui.min.js}"></script>-->
+<script src="/js/lib/jquery.pagination.js"></script>
+<script src="../static/js/timecount.js" th:src="@{/js/timecount.js}"></script>
+<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+<script src="../static/dist/skPlayer.min.js" th:src="@{/dist/skPlayer.min.js}"></script>
+<script>
+    var player = new skPlayer({"autoplay":false,"listshow":false,"mode":"listloop","music":{"type":"cloud","source":"819935406","media":"netease"}});
+</script>
+</html>

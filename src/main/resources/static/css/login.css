@@ -1,0 +1,416 @@
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+a{
+    outline: none!important;
+}
+
+a:hover{
+    color: white;
+}
+
+body{
+
+    font-weight: 400;
+    font-size: .8em;
+    line-height: 1.6em;
+    font-family: 'Open Sans', Frutiger, Calibri, 'Myriad Pro', Myriad, sans-serif;
+    color: #000;
+    /*text-align: center;*/
+    background-color: #0082c9;
+    background-image: url(https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/loginBackground.png);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100%;
+    height: auto;
+}
+
+.form-container{
+    width: 300px;
+    margin-top: 10vh;
+}
+
+
+.inner-container{
+
+}
+
+header{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+.logo{
+    background-image: url(https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/infinity.svg);
+    background-repeat: no-repeat;
+    background-size: 175px;
+    background-position: center;
+    width: 256px;
+    min-height: 128px;
+    max-height: 200px;
+    margin: 0 auto;
+    position: relative;
+    left: unset;
+}
+
+form{
+    position: relative;
+    width: 280px;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    /*cursor: default;*/
+}
+
+.username{
+    margin-bottom: 0 !important;
+    border-bottom: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    width: 269px;
+    background: #fff;
+    color: #555;
+    cursor: text;
+    font-family: inherit;
+    /* -webkit-appearance: textfield; */
+    -moz-appearance: textfield;
+    /* box-sizing: content-box; */
+    border: none;
+    font-weight: 300;
+    padding: 11px 10px 9px;
+    border-radius: 3px;
+    font-size: 1.3rem;
+}
+
+.password{
+    margin-top: 0 !important;
+    border-top: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
+
+
+    width: 269px;
+    background: #fff;
+    color: #555;
+    cursor: text;
+    font-family: inherit;
+    /* -webkit-appearance: textfield; */
+    -moz-appearance: textfield;
+    /* box-sizing: content-box; */
+    border: none;
+    font-weight: 300;
+    padding: 11px 10px 9px;
+    border-radius: 3px;
+    font-size: 1.3rem;
+}
+
+.telephone-code{
+    margin-top: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
+
+
+    width: 164px;
+    background: #fff;
+    color: #555;
+    cursor: text;
+    font-family: inherit;
+    /* -webkit-appearance: textfield; */
+    -moz-appearance: textfield;
+    /* box-sizing: content-box; */
+    border: none;
+    font-weight: 300;
+    padding: 11px 10px 9px;
+    font-size: 1.3rem;
+}
+
+.submit-box{
+    position: relative;
+}
+
+.submit-btn{
+    background-color: #0082c9;
+    border: 1px solid #fff;
+    color: #fff;
+
+    position: relative;
+    padding: 10px 20px;
+    width: 269px;
+    font-weight: 600;
+
+
+
+    font-size: 20px;
+    outline: none;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.reset-password-container{
+    display: inline-block;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 0 2px rgba(0, 0, 0, .4);
+    font-size: 1.2rem;
+}
+
+.lost-password{
+    display: inline-block;
+    padding: 12px;
+    margin-top: -6px;
+    color: #fff;
+}
+
+.form-container{
+    margin: 120px auto;
+    width: 400px;
+}
+
+fieldset{
+    border: 0;
+}
+
+.login-qq{
+    text-decoration: none;
+    text-align: left;
+    color: #fff;
+}
+
+.lost-password{
+    text-decoration: none;
+    text-align: right;
+}
+
+.return-back{
+    text-align: right;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 11px;
+}
+
+footer{
+    /*height: 70px;*/
+    /*margin-top: 350px;*/
+    /*line-height: 88px;*/
+}
+
+.info{
+
+    text-shadow: 0 0 2px rgba(0, 0, 0, .4);
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.info a{
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.entity-name{
+    font-weight: 600;
+}
+
+.submit-icon{
+    position: absolute;
+    top: 31px;
+    right: 23px;
+
+
+    background-image: url(/img/confirm-white.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 16px;
+    min-height: 16px;
+    cursor: pointer;
+
+
+}
+
+
+.icon-loading{
+    background-image: url(/img/loading-dark.gif);
+}
+
+.icon-loading::after{
+    z-index: 2;
+    content: '';
+    height: 16px;
+    width:16px;
+    margin: -17px 0 0 -17px;
+    position: absolute;
+    top: 66%;
+    left: 91%;
+    border-radius: 100%;
+    -webkit-animation: rotate .8s infinite linear;
+    animation: rotate .8s infinite linear;
+    -webkit-transform-origin: center;
+    -ms-transform-origin: center;
+    transform-origin: center;
+
+    border: 2px solid rgba(187, 187, 187, 0.5);
+    border-top-color: #bbb;
+}
+
+.box-hidden{
+    display: none;
+}
+
+.sign-in{
+    text-decoration: none;
+    text-align: right;
+    color: #fff;
+}
+
+#send-message{
+    display: inline-block;
+    width: 105px;
+    line-height: 38px;
+    height: 38px;
+    background-color: rgba(187, 187, 187, 0.5);
+    color: white;
+    text-align: center;
+    padding-left: 0px;
+    position: absolute;
+    font-size: 1.3rem;
+
+}
+
+#new-password{
+    margin-top: 0 !important;
+    border-top: 0 !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
+
+
+    width: 269px;
+    background: #fff;
+    color: #555;
+    cursor: text;
+    font-family: inherit;
+    /* -webkit-appearance: textfield; */
+    -moz-appearance: textfield;
+    /* box-sizing: content-box; */
+    border: none;
+    font-weight: 300;
+    padding: 11px 10px 9px;
+    font-size: 1.3rem;
+}
+
+#check-new-password{
+    margin-top: 0 !important;
+    border-top: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
+
+
+    width: 269px;
+    background: #fff;
+    color: #555;
+    cursor: text;
+    font-family: inherit;
+    /* -webkit-appearance: textfield; */
+    -moz-appearance: textfield;
+    /* box-sizing: content-box; */
+    border: none;
+    font-weight: 300;
+    padding: 11px 10px 9px;
+    border-radius: 3px;
+    font-size: 1.3rem;
+}
+
+#real-userName{
+    margin-top: 0 !important;
+    border-top: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    box-shadow: 0 1px 0 rgba(0,0,0,.1) inset !important;
+
+
+    width: 269px;
+    background: #fff;
+    color: #555;
+    cursor: text;
+    font-family: inherit;
+    /* -webkit-appearance: textfield; */
+    -moz-appearance: textfield;
+    /* box-sizing: content-box; */
+    border: none;
+    font-weight: 300;
+    padding: 11px 10px 9px;
+    border-radius: 3px;
+    font-size: 1.3rem;
+}
+
+.layui-layer-btn0{
+    font-size: 1.5em;
+}
+
+.am-icon-close{
+    color: red;
+}
+
+.am-icon-check{
+    color: green;
+}
+
+.icon-double-telephone{
+    display: block;
+    position: absolute;
+    right: 0.9em;
+    top: 1em;
+    font-size: 2em;
+}
+
+.icon-double-password{
+    display: block;
+    position: absolute;
+    right: 0.7em;
+    top: 5.6em;
+    font-size: 2em;
+}
+
+.icon-double-newPassword{
+    position: absolute;
+    font-size: 2em;
+    right: .7em;
+    top: 5.6em;
+}
+
+.icon-check-newPassword{
+    font-size: 2em;
+    position: absolute;
+    right: .7em;
+    top: 8em;
+}

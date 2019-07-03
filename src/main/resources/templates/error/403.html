@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Altri | 403</title>
+
+  <link rel="stylesheet" href="../../static/404/css/normalize.css" th:href="@{/404/css/normalize.css}">
+  <link rel="stylesheet" href="../../static/404/css/style.css" th:href="@{/404/css/style.css}"/>
+  <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../static/css/head.css" th:href="@{/css/head.css}">
+
+</head>
+
+<body>
+  <header class="am-topbar nav-color-change">
+    <h1 class="am-topbar-brand">
+      <img class="am-round am-img-thumbnail am-circle" src="https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/fjx.png">
+      <a href="/">Altri</a>
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li class="special-font"><a href="/"><span class="am-icon-home am-icon"></span>&nbsp;首页</a></li>
+        <li class="special-font"><a href="/archive"><span class="am-icon-arrows am-icon"></span>&nbsp;时光轴</a></li>
+        <li class="special-font"><a href="/leaveMessage"><span class="am-icon-magnet am-icon"></span>&nbsp;留言</a></li>
+        <li class="special-font"><a href="/space"><span class="am-icon-shield am-icon"></span>&nbsp;空间</a></li>
+        <li class="special-font"><a href="/link"><span class="am-icon-code am-icon"></span>&nbsp;友链</a></li>
+        <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
+      </ul>
+
+
+
+      <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
+        <a href="/edit"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
+      </div>
+
+
+      <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
+        <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
+          <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
+          <ul class="am-dropdown-content">
+            <li>
+              <a href="/user">个人主页</a>
+            </li>
+            <li>
+              <a href="/logout">退出登录</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+        <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">注册</a>
+        <!--<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</button>-->
+      </div>
+
+      <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
+        <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">登录</a>
+      </div>
+
+
+
+    </div>
+  </header>
+  <div class="am-g">
+    <!--<div style="text-align:center;clear:both;position:absolute;top:0;left:260px"></div>-->
+    <canvas class="canvas"></canvas>
+    <div class="help" style="display: none">?</div>
+    <div class="ui" style="display: none">
+      <input class="ui-input" type="text" />
+      <span class="ui-return">↵</span>
+    </div>
+    <div class="overlay">
+      <div class="tabs">
+        <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+
+        <div class="tabs-panels">
+          <ul class="tabs-panel commands">
+            <li class="commands-item"><span class="commands-item-title">Text</span><span class="commands-item-info" data-demo="Hello :)">Type anything</span><span class="commands-item-action">Demo</span></li>
+            <li class="commands-item"><span class="commands-item-title">Countdown</span><span class="commands-item-info" data-demo="#countdown 10">#countdown<span class="commands-item-mode">number</span></span><span class="commands-item-action">Demo</span></li>
+            <li class="commands-item"><span class="commands-item-title">Time</span><span class="commands-item-info" data-demo="#time">#time</span><span class="commands-item-action">Demo</span></li>
+            <li class="commands-item"><span class="commands-item-title">Rectangle</span><span class="commands-item-info" data-demo="#rectangle 30x15">#rectangle<span class="commands-item-mode">width x height</span></span><span class="commands-item-action">Demo</span></li>
+            <li class="commands-item"><span class="commands-item-title">Circle</span><span class="commands-item-info" data-demo="#circle 25">#circle<span class="commands-item-mode">diameter</span></span><span class="commands-item-action">Demo</span></li>
+            <li class="commands-item commands-item--gap"><span class="commands-item-title">Animate</span><span class="commands-item-info" data-demo="The time is|#time|#countdown 3|#icon thumbs-up"><span class="commands-item-mode">command1</span>&nbsp;|<span class="commands-item-mode">command2</span></span><span class="commands-item-action">Demo</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="../../static/404/js/403.js" th:src="@{/404/js/403.js}"></script>
+</html>

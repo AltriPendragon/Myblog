@@ -1,0 +1,271 @@
+.article-top{
+    text-align: center;
+    margin-top: 120px;
+}
+
+.article-meta-tag{
+    padding-right: 10px;
+    font-size: 14px;
+}
+
+blockquote{
+    text-align: left;
+    border-left: 0px;
+}
+
+blockquote::before{
+    color: #ccc;
+    content: "\201C";
+    font-size: 4em;
+    left: 5px;
+    top: .3em;
+    line-height: .1em;
+    margin-right: .25em;
+    vertical-align: -.4em;
+    text-align: left;
+}
+
+blockquote p{
+    display: inline;
+}
+
+
+
+.article-container{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.i-say-author{
+    float: right;
+    margin-right: 18px;
+}
+
+.post-copyright{
+    margin: 58px 0 30px;
+    padding: 0.5em 1em;
+    border-left: 3px solid #ff1700;
+    background-color: #f9f9f9;
+    list-style: none;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.end-logo{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.last-article{
+    float: left;
+}
+
+.next-article{
+    float: right;
+}
+
+
+
+.comment-edit{
+    border: 1px solid #4398ed;
+    padding: 15px 15px 5px;
+    margin: 100px 50px 10px 50px;
+    border-radius: 7px;
+}
+
+#comment-content{
+    width: 100%;
+    height: 50px;
+    background: 0 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 0;
+    font-size: 14px;
+    resize: none;
+    line-height: normal;
+    text-align: left;
+    outline: none;
+}
+
+.comment-btn{
+    float: right;
+}
+
+#comment-btn{
+    margin-right: 47px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 5px 10px;
+    outline: none!important;
+}
+
+.comment-main{
+    margin-top: 20px;
+}
+
+.comment-main-list .list-item .user-img img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.reply-box .reply-item .reply-user-img img{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.user-img{
+    float: left;
+    margin: 24px 0 0 5px;
+    position: relative;
+}
+
+
+.list-item-content{
+    position: relative;
+    margin-left: 85px;
+    /*padding: 22px 0 14px;*/
+
+    padding: 22px 0 0px;
+}
+
+.text{
+    margin: 3px 0px;
+    font-size: 14px;
+}
+
+.info{
+    color: #99a2aa;
+    line-height: 26px;
+    font-size: 12px;
+}
+
+.info span{
+    margin-right: 20px;
+}
+
+/*.user{*/
+/*font-size: 14px;*/
+/*font-weight: 700;*/
+/*line-height: 18px;*/
+
+/*}*/
+.user-name{
+    color: #6d757a;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-right: 3px;
+}
+
+.reply-item-content{
+    display: inline-block;
+    position: relative;
+    margin-left: 10px;
+    padding: 2px 0 14px;
+}
+
+.reply-user-img{
+    float: left;
+    position: relative;
+}
+
+.like{
+    cursor: pointer;
+}
+
+.like a{
+    color: #99a2aa;
+}
+
+.like a:hover{
+    color: #0e90d2;
+}
+
+.reply{
+    cursor: pointer;
+}
+
+.reply a{
+    color: #99a2aa;
+}
+
+.reply a:hover{
+    color: #0e90d2;
+}
+
+.comment-reply{
+    position: relative;
+    margin-left: 85px;
+    padding: 22px 0 14px;
+}
+
+.comment-reply-textarea{
+    position: relative;
+    margin-left: 85px;
+    margin-right: 80px;
+    margin-top: 15px;
+}
+
+#comment-reply-textarea{
+    font-size: 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #f4f5f7;
+    border: 1px solid #e5e9ef;
+    overflow: auto;
+    border-radius: 4px;
+    color: #555;
+    width: 100%!important;
+    transition: 0s;
+    padding: 5px 10px;
+    line-height: normal;
+    resize: none;
+
+    height:65px;
+}
+
+#comment-reply-textarea:focus{
+    border-color: #1890ff
+}
+
+.comment-reply-textarea-btn{
+    width: 70px;
+    height: 64px;
+    text-align: center;
+    position: absolute;
+    right: -80px;
+    top: 0;
+    padding: 4px 15px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 60px;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: #00a1d6;
+    border: 1px solid #00a1d6;
+    transition: .1s;
+    user-select: none;
+    outline: none;
+
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.no-message{
+    text-align: center;
+}
+
+.display-none{
+    display: none;
+}
+
+.am-icon-tag-a{
+    margin-right: 8px;
+}

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>edit</title>
+        <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="../css/editormd.css" />
+
+        <style>
+            @font-face {
+                font-family: 'my-kai';
+                src: url('../../font/my-kai.ttf') format('truetype');
+            }
+
+            .article_inpute-box{
+                /*margin: 4px 0;*/
+                /*padding: 8px;*/
+                /*font-size: 18px;*/
+                /*line-height: 24px;*/
+                /*background-color: #fff;*/
+                /*border: 1px solid #ccc;*/
+
+
+                display: inline-block;
+                font-variant-ligatures: no-common-ligatures;
+                width: 80%;
+                padding: 8px 24px;
+                font-size: inherit;
+                line-height: 1.5;
+                color: inherit;
+                background-color: #fff;
+                margin-left: 40px;
+                ;
+            }
+
+            .article_input-text{
+                width: 90%;
+                margin: 4px 0;
+                padding: 6px;
+                font-size: 18px;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-family: my-kai;
+            }
+
+            .article_input-text:focus{
+                -moz-outline-radius: 4px;
+                outline: solid #B2DFEE 1px;
+            }
+
+            .user-box{
+                display: inline-block;
+            }
+
+            .model-category{
+                text-align: left;
+                margin-top: 20px;
+                font-size: 15px;
+            }
+
+
+            .article-tag{
+                display: inline-block;
+            }
+
+            .tag-item{
+                display: inline-block;
+                flex-wrap: nowrap;
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .tag-list{
+                display: inline-block;
+                flex-wrap: nowrap;
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+
+            .tag-name{
+                padding: 5px 8px;
+                background: #e9e9e9;
+                border-radius: 2px;
+                font-size: 12px;
+                max-width: 480px;
+                color: #4f4f4f;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .close-tag{
+                padding: 0px 2px 4px;
+                color: #ddd;
+                background-color: transparent;
+                font-size: 20px;
+            }
+
+            .close-tag-type{
+                padding: 0px 2px 4px;
+                color: #ddd;
+                background-color: transparent;
+                font-size: 20px;
+            }
+
+            .add-tag-type{
+                padding: .5em 0.5em 1.3rem 0.5rem;
+                color: lightblue;
+            }
+
+            .add-tag-type:hover{
+                color: lightblue;
+            }
+
+            .add-tag{
+                padding: .5em 0.5em 1.3rem 0.5rem;
+                color: lightblue;
+            }
+
+            .add-tag:hover{
+                color: lightblue;
+            }
+
+            .article-type-control{
+
+            }
+
+            .select-choice{
+
+                display: inline-block;
+                width: 140px;
+                border: none;
+                border-radius: 4px;
+                position: relative;
+                overflow: hidden;
+                top: 10px;
+            }
+
+            .text-field{
+                display: block;
+
+                height: 32px;
+                /*background: #fafafa;*/
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 14px;
+                color: #999;
+
+                background-color: #fff;
+                font-family: inherit;
+                font-weight: 400;
+                /*font-size: 1.05em;*/
+                padding: .25em .5em;
+                box-sizing: border-box;
+                width: 100%;
+                max-width: 100%;
+            }
+
+
+            .article-buttons{
+                margin-top: 40px;
+                margin-left: 300px;
+            }
+
+            .article-button{
+                margin-left: 20px;
+            }
+
+            .button-control{
+                outline: none!important;
+            }
+
+            .button-control:hover{
+                color: #ddd;
+            }
+
+            .button-control:focus{
+                color: #ddd;
+                background-color: transparent;
+                /*outline: none;*/
+                box-shadow: none;
+
+            }
+
+            .button-control-type{
+                color: lightblue;
+                box-shadow: none!important;
+            }
+
+            .am-btn{
+                outline: none!important;
+            }
+        </style>
+        <!--<link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />-->
+    </head>
+    <body>
+        <div id="layout">
+
+            <div class="article-bar">
+                <div class="article_inpute-box">
+                    <input maxlength="100" placeholder="请输入文章标题" class="article_input-text">
+                </div>
+
+                <div class="user-box">
+                    <button type="button" class="am-btn am-btn-secondary publish" data-am-modal="{target: '#select-model', closeViaDimmer: 0, width: 580, height: 360}">发表博客</button>
+                </div>
+            </div>
+
+            <!--<header>-->
+                <!--<h1>Simple example</h1>-->
+            <!--</header>-->
+
+            <div class="am-modal am-modal-no-btn select-model" tabindex="-1" id="select-model">
+                <div class="am-modal-dialog">
+                    <div class="am-modal-hd">发布文章
+                        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                    </div>
+                    <hr>
+
+                    <div class="am-modal-bd">
+                        <div class="category-box model-category">
+                            <label class="article-tag">文章标签:</label>
+                            <div class="tag-list">
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">1</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag button-control"></button>-->
+                                <!--</div>-->
+
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">2</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag button-control"></button>-->
+                                <!--</div>-->
+                            </div>
+
+                            <div class="am-btn am-icon-plus-square add-tag button-control-type">&nbsp;&nbsp;添加标签</div>
+                        </div>
+
+                        <div class="category-box model-category">
+                            <label class="article-tag">个人分类:</label>
+
+                            <div class="tag-list">
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">12</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag-type button-control"></button>-->
+                                <!--</div>-->
+
+                                <!--<div class="tag-item">-->
+                                    <!--<span contenteditable="true" class="tag-name">12</span>-->
+                                    <!--<button class="am-btn am-icon-times close-tag-type button-control"></button>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="am-btn am-icon-plus-square add-type add-tag-type button-control-type">&nbsp;&nbsp;添加分类</div>
+                        </div>
+
+                        <div class="category-box model-category">
+                            <label class="article-tag article-type-control">文章类型:</label>
+                            <div class="select-choice">
+                                <select class="text-field">
+                                    <option value="0" selected="selected">请选择</option>
+                                    <option value="origin">原创</option>
+                                    <option value="repost">转载</option>
+                                    <option value="translated">翻译</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!--<div class="article-tag model-category">文章标签</div>-->
+                        <!--<div class="article-category model-category">个人分类</div>-->
+                        <!--<div class="article-type model-category">文章类型</div>-->
+                    </div>
+
+                    <div class="model-button-bar article-buttons">
+                        <button class="am-btn am-btn-danger article-button">取消</button>
+                        <button class="am-btn am-btn-primary article-button">发布文章</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="test-editormd">
+                <textarea style="display:none;" id="$id-markdown-code"></textarea>
+            </div>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
+        <script src="../editormd.js"></script>
+        <script type="text/javascript">
+			var testEditor
+            var count = 0
+            var count1 = 0
+
+            $(function() {
+                testEditor = editormd("test-editormd", {
+                    width   : "90%",
+                    height  : 820,
+                    syncScrolling : "single",
+                    saveHTMLToTextarea : true,
+                    htmlDecode : "style,script,iframe|on*",
+                    emoji : true,
+                    imageUpload : true,
+                    previewTheme : "dark",
+                    imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                    imageUploadURL : "",
+                    path    : "../lib/"
+                });
+                
+                /*
+                // or
+                testEditor = editormd({
+                    id      : "test-editormd",
+                    width   : "90%",
+                    height  : 640,
+                    path    : "../lib/"
+                });
+                */
+                
+                
+                $(".publish").bind('click',function () {
+                    console.log(testEditor.getMarkdown())
+//                    console.log(testEditor.getHTML())
+                })
+                
+            });
+
+
+            $(".add-tag").click(function () {
+
+                var temp = $(".tag-list").parent().children(".tag-list").children(".tag-item:last-child").children("span").text();
+                console.log($(this).parent().children(".tag-list").children(".tag-item:last-child").children("span").text())
+                if(temp!=""||count==0){
+                    count++;
+                    $(this).parent().children(".tag-list").append('<div class="tag-item">' +
+                        '<span contenteditable="true" class="tag-name"></span>' +
+                        '<button class="am-btn am-icon-times close-tag button-control"></button>' +
+                        '</div>');
+                    //$(".tag-item").last().children("span").focus();
+                    $(this).parent().children(".tag-list").children(".tag-item:last-child").children("span").focus();
+                }
+            })
+
+            $(document).on("click",".close-tag",function () {
+                $(this).parent().remove()
+                count--;
+            })
+
+
+            $(".add-tag-type").click(function () {
+
+                var temp = $(this).parent().children(".tag-list").children(".tag-item:last-child").children("span").text();
+                console.log($(this).parent().children(".tag-list").children(".tag-item:last-child").children("span").text())
+                if(temp!=""||count1==0){
+                    count1++;
+                    $(this).parent().children(".tag-list").append('<div class="tag-item">' +
+                        '<span contenteditable="true" class="tag-name"></span>' +
+                        '<button class="am-btn am-icon-times close-tag-type button-control"></button>' +
+                        '</div>');
+                    //$(".tag-item").last().children("span").focus();
+                    $(this).parent().children(".tag-list").children(".tag-item:last-child").children("span").focus();
+                }
+            })
+
+            $(document).on("click",".close-tag-type",function () {
+                $(this).parent().remove()
+                count1--;
+            })
+
+
+
+
+        </script>
+    </body>
+</html>
