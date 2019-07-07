@@ -766,5 +766,10 @@ body{
     padding-right: 5px;
 }
 
+.blog_copyright{
+    padding-bottom: 6px;
+    display: inline-block;
+}
+
 
 
