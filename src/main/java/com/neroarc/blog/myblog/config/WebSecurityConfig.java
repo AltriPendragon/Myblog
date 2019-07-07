@@ -1,6 +1,5 @@
 package com.neroarc.blog.myblog.config;
 
-import com.neroarc.blog.myblog.component.AuthenticationSuccessHandlerImpl;
 import com.neroarc.blog.myblog.service.impl.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -2,7 +2,6 @@ package com.neroarc.blog.myblog.control;
 
 import com.neroarc.blog.myblog.model.User;
 import com.neroarc.blog.myblog.service.UserService;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
