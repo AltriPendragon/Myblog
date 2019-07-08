@@ -29,7 +29,7 @@
 | 项目构建 | Maven                 |
 | 运行环境 | 阿里云Centos7         |
 
-####页面展示
+#### 页面展示
 
 ###### 首页
 ![](https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/1562490977378.png)
