@@ -94,33 +94,36 @@ function checkPhone(){
         return false;
     }
 
-    $.ajax({
-        type:"get",
-        url:"/getUserByProviderId",
-        dataType:"json",
-        async:false,
-        data:{
-            telephone:phone
-        },
+    if(register=="register"){
+        $.ajax({
+            type:"get",
+            url:"/getUserByProviderId",
+            dataType:"json",
+            async:false,
+            data:{
+                telephone:phone
+            },
 
-        success:function (data) {
-            if(data['status']==500){
-                layer.alert('该电话已经注册',{
-                    icon:2,
-                    skin: 'layer-ext-moon'
-                })
+            success:function (data) {
+                if(data['status']==500){
+                    layer.alert('该电话已经注册',{
+                        icon:2,
+                        skin: 'layer-ext-moon'
+                    })
 
-                phoneExist = 1;
+                    phoneExist = 1;
+                }
+
             }
 
+
+        })
+
+        if(phoneExist==1){
+            return false;
         }
-
-
-    })
-
-    if(phoneExist==1){
-        return false;
     }
+
 
 
     return true;
@@ -372,6 +375,7 @@ $(".lost-password").on("click",function () {
 })
 
 $(".return-back").on("click",function () {
+    register = "login";
     resetInput();
     resetIcon();
 
@@ -382,6 +386,7 @@ $(".return-back").on("click",function () {
 
 $(".sign-in").on("click",function () {
 
+    register = "register";
     resetInput();
     resetIcon();
 
