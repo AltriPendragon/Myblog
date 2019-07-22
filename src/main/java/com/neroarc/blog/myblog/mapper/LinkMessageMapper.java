@@ -27,7 +27,7 @@ public interface LinkMessageMapper {
      * @param linkId
      * @return
      */
-    @Select("select link_id,remarker_id,responsor_id,p_id,message,likes,left(message_date,16) message_date from link_message where p_id=#{linkId} order by message_date desc")
+    @Select("select link_id,remarker_id,responsor_id,p_id,message,likes,left(message_date,16) message_date from link_message where p_id=#{linkId} order by message_date asc")
     List<LinkMessage> getChildrenMessage(long linkId);
 
     /**

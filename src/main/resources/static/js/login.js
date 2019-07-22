@@ -122,6 +122,7 @@ function checkPhone(){
         if(phoneExist==1){
             return false;
         }
+
     }
 
 

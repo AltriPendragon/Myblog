@@ -28,7 +28,7 @@ public interface LeaveMessageMapper {
      * @param messageId
      * @return
      */
-    @Select("select message_id,remarker_id,responsor_id,p_id,message,likes,left(message_date,16) message_date from leave_message where p_id=#{messageId} order by message_date desc")
+    @Select("select message_id,remarker_id,responsor_id,p_id,message,likes,left(message_date,16) message_date from leave_message where p_id=#{messageId} order by message_date asc")
     List<LeaveMessage> getChildrenMessage(long messageId);
 
     /**

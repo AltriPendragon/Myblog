@@ -2,7 +2,8 @@ body{
     margin: 0;
 }
 #page{
-    background-image: url("https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/about.png");
+    /*background-image: url("https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/about.png");*/
+    background-image: url("https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/about1.png");
     background-position: center;
     background-attachment: fixed;
     -webkit-background-size: cover;
