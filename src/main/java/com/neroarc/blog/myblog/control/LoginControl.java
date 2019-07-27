@@ -1,6 +1,7 @@
 package com.neroarc.blog.myblog.control;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,24 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginControl {
 
+    private String anonymousUser = "anonymousUser";
+
     @RequestMapping("/login")
     public String login(HttpServletRequest request){
+
         request.getSession().setAttribute("url",request.getHeader("Referer"));
         System.out.println(request.getHeader("Referer"));
+        if(!anonymousUser.equals(SecurityContextHolder.getContext().getAuthentication().getName())){
+            return "fanIndex";
+        }
         return "login";
     }
 
     @RequestMapping("/register")
     public String register(){
+        if(!anonymousUser.equals(SecurityContextHolder.getContext().getAuthentication().getName())){
+            return "fanIndex";
+        }
         return "login";
     }
 
@@ -37,15 +47,5 @@ public class LoginControl {
     @RequestMapping("/")
     public String index(){
         return "fanIndex";
-    }
-
-    @RequestMapping("/signin")
-    public String signin(){
-        return "/login1";
-    }
-
-    @RequestMapping("/show")
-    public String test(){
-        return "passageTest";
     }
 }
