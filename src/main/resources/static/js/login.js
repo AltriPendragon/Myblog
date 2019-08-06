@@ -155,7 +155,7 @@ function loginSubmitCheck() {
     }
 
     $.ajax({
-        type:"get",
+        type:"post",
         url:"/checkUserNameAndPassword",
         dataType:"json",
         async:false,

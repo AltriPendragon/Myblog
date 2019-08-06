@@ -29,7 +29,7 @@ public interface ArticleMapper {
      * 得到所有文章
      * @return
      */
-    @Select("select article_id,author,left(create_time,10) create_time,title,summary,type,category,tags,`read`,comment from article order by create_time desc")
+    @Select("select article_id,author,left(create_time,10) create_time,create_time time,title,summary,type,category,tags,`read`,comment from article order by time desc")
     List<Article> getArticles();
 
     /**

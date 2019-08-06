@@ -131,7 +131,6 @@ function getArticle() {
                 var lastUrl="/article/"+last['articleId'];
                 var nextUrl="/article/"+next['articleId'];
 
-
                 if(last['flag']==0){
                     lastTitle = "无";
                     lastUrl = "";

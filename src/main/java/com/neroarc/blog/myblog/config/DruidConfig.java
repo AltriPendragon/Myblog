@@ -15,6 +15,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author: fjx
+ * @date: 2019/1/22 21:28
+ * Describe: Druid配置
+ */
 @Configuration
 public class DruidConfig {
 

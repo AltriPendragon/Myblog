@@ -24,6 +24,7 @@ public class LoginControl {
 
         request.getSession().setAttribute("url",request.getHeader("Referer"));
         System.out.println(request.getHeader("Referer"));
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         if(!anonymousUser.equals(SecurityContextHolder.getContext().getAuthentication().getName())){
             return "fanIndex";
         }

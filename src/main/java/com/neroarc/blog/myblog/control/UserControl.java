@@ -232,7 +232,7 @@ public class UserControl {
         return jsonObject;
     }
 
-    @RequestMapping("/checkUserNameAndPassword")
+    @PostMapping("/checkUserNameAndPassword")
     public int checkUserNameAndPassword(@RequestParam("telephone") String telephone, @RequestParam("password") String password){
 
         User user = userService.getUserByProviderId(telephone);
