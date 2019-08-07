@@ -19,7 +19,7 @@ function getAllLinks() {
                 $.each(data['result'],function (index, obj) {
                     var item = ' <li class="link-item">\n' +
                         '                                            <a href="'+obj['url']+'">\n' +
-                        '                                                <img src="'+obj['headImg']+'" class="friend-img">\n' +
+                        '                                                <img  class="friend-img" data-original="'+obj['headImg']+'" >\n' +
                         '                                                <span class="name">'+obj['name']+'</span>\n' +
                         '                                                <hr class="des-divider">\n' +
                         '                                                <div class="description">'+obj['introduce']+'</div>\n' +
@@ -33,6 +33,8 @@ function getAllLinks() {
             if(data['state']==1){
                 $(".user-name-show").text(data['name']);
             }
+
+            $("img.friend-img").lazyload();
         }
     })
 }

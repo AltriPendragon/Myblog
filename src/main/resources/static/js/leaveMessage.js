@@ -140,9 +140,8 @@ $.ajax({
 
                 $(".comment-main-list").append(list_item);
             })
+
         }
-
-
     }
 
 })
