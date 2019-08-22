@@ -1,20 +1,22 @@
 package com.neroarc.blog.myblog.control;
 
+import com.neroarc.blog.myblog.model.Image;
+import com.neroarc.blog.myblog.service.ArticleService;
 import com.neroarc.blog.myblog.service.ImageService;
 import com.neroarc.blog.myblog.utils.DateUtil;
 import com.neroarc.blog.myblog.utils.FileUtil;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.security.Principal;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author: fjx
@@ -27,6 +29,9 @@ public class ImageControl {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    ArticleService articleService;
 
 
     @RequestMapping("/uploadHeadImage")
@@ -76,5 +81,46 @@ public class ImageControl {
         return jsonObject;
 
 
+    }
+
+
+    @RequestMapping("/addImage")
+    int addBgImage(Image image){
+        int flag = imageService.addBgImage(image);
+        if (flag==0){
+            return 500;
+        }
+
+        return 200;
+    }
+
+
+   @RequestMapping("/getBgAllImages")
+   @CrossOrigin("http://localhost:63342")
+    List<Image> getBgAllImages(){
+        return imageService.getBgAllImages();
+    }
+
+
+    @RequestMapping("/getBgImagesByType")
+    @CrossOrigin("http://localhost:63342")
+    List<Image> getBgImagesByType(int type){
+        return imageService.getBgImagesByType(type);
+    }
+
+    @RequestMapping("/getBgImageById")
+    Image getBgImageById(int id){
+        return imageService.getBgImageById(id);
+    }
+
+
+    @RequestMapping("/getBgImageByTag")
+    List<Image> getBgImageByTag(String tag){
+        return imageService.getBgImageByTag(tag);
+    }
+
+    @PostMapping("/getPageArticlest")
+    public JSONObject getArticles(@RequestBody Map<String,Integer> map){
+        return articleService.getPageArticles(map.get("rows"),1);
     }
 }

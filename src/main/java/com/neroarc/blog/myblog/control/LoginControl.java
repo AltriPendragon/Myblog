@@ -3,7 +3,6 @@ package com.neroarc.blog.myblog.control;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,5 +47,10 @@ public class LoginControl {
     @RequestMapping("/")
     public String index(){
         return "fanIndex";
+    }
+
+    @RequestMapping("/daily")
+    public String daily(){
+        return "daily";
     }
 }
