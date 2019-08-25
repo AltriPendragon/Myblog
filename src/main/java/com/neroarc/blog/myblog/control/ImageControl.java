@@ -123,4 +123,9 @@ public class ImageControl {
     public JSONObject getArticles(@RequestBody Map<String,Integer> map){
         return articleService.getPageArticles(map.get("rows"),1);
     }
+
+    @RequestMapping("/searchImageByEs")
+    public List<Image> searchImageByEs(String search){
+        return imageService.searchImageByEs(search);
+    }
 }

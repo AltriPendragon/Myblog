@@ -58,4 +58,11 @@ public interface ImageService {
     * @return
     */
    List<Image> getBgImageByTag(String tag);
+
+   /**
+    * 通过内容,通过es,搜索tag,description符合的内容
+    * @param search
+    * @return
+    */
+   List<Image> searchImageByEs(String search);
 }
