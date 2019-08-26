@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neroarc.blog.myblog.mapper.ImageMapper;
 import com.neroarc.blog.myblog.model.Image;
+import com.neroarc.blog.myblog.repository.ImageRepository;
 import com.neroarc.blog.myblog.service.ImageService;
 import com.neroarc.blog.myblog.utils.FileUtil;
 import org.elasticsearch.action.search.SearchResponse;
@@ -42,6 +43,9 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
+    @Autowired
+    private ImageRepository imageRepository;
+
     private FileUtil fileUtil = new FileUtil();
 
     @Override
@@ -52,7 +56,18 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public int addBgImage(Image image) {
-        return imageMapper.addBgImage(image);
+        int flag = imageMapper.addBgImage(image);
+        if(flag!=0){
+            Image save = imageRepository.save(image);
+            if (save != null) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+        }
+
+        return flag;
+
     }
 
     @Override
@@ -141,6 +156,16 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public int updateBgImage(Image image) {
-        return imageMapper.updateBgImage(image);
+        int flag = imageMapper.updateBgImage(image);
+        if (flag != 0) {
+            Image save = imageRepository.save(image);
+            if (save != null) {
+                flag = 1;
+            } else {
+                flag = 0;
+            }
+        }
+
+        return flag;
     }
 }

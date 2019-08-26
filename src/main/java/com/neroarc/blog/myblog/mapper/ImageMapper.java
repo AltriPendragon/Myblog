@@ -1,10 +1,7 @@
 package com.neroarc.blog.myblog.mapper;
 
 import com.neroarc.blog.myblog.model.Image;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,6 +22,7 @@ public interface ImageMapper {
      * @return
      */
     @Insert("insert into image(url,type,tag,description) values(#{url},#{type},#{tag},#{description})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     int addBgImage(Image image);
 
 

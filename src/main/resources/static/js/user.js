@@ -376,8 +376,6 @@ $(document).on("click",".image-edit-save-btn",function () {
     var url = $("#bgUrl").val();
     var type = $("#bgType").val();
 
-    alert(editId)
-
     $.ajax({
         type:"get",
         url:"/updateImage",
