@@ -31,39 +31,6 @@
         <li class="special-font"><a href="/aboutme"><span class="am-icon-mouse-pointer am-icon"></span>&nbsp;关于我</a></li>
       </ul>
 
-
-
-      <div class="am-topbar-right write-blog"  sec:authorize="hasAnyRole('ADMIN')">
-        <a href="/edit"><i class="blog-icon">&#xe60e;</i>&nbsp;写博客</a>
-      </div>
-
-
-      <div class="am-topbar-right" th:if="${#httpServletRequest.remoteUser}">
-        <div class="am-dropdown am-dropdown-flip" data-am-dropdown>
-          <button class="am-btn am-btn-primary am-dropdown-toggle am-topbar-btn am-btn-sm mybutton" data-am-dropdown-toggle><span class="user-name-show"></span><span class="am-icon-caret-down"></span></button>
-          <ul class="am-dropdown-content">
-            <li>
-              <a href="/user">个人主页</a>
-            </li>
-            <li>
-              <a href="/logout">退出登录</a>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-
-      <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
-        <a href="/register" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">注册</a>
-        <!--<button class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton">注册</button>-->
-      </div>
-
-      <div class="am-topbar-right" th:unless="${#httpServletRequest.remoteUser}">
-        <a href="/login" class="am-btn am-btn-primary am-topbar-btn am-btn-sm mybutton special-font">登录</a>
-      </div>
-
-
-
     </div>
   </header>
   <div class="am-g">

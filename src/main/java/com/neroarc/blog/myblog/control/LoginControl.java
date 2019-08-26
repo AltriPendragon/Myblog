@@ -50,16 +50,19 @@ public class LoginControl {
     }
 
     @RequestMapping("/daily")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public String daily(){
         return "daily";
     }
 
     @RequestMapping("/space")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public String space(){
         return "space";
     }
 
     @RequestMapping("/gallery")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public String gallery() {
         return "gallery";
     }

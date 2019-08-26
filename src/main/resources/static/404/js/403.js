@@ -12,7 +12,6 @@
 
 */
 
-
 var S = {
   init: function () {
     var action = window.location.href,
