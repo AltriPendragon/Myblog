@@ -153,6 +153,7 @@ public class ImageControl {
     }
 
     @RequestMapping("/searchImageByEs")
+    @CrossOrigin("http://localhost:63342")
     public List<Image> searchImageByEs(String search){
         return imageService.searchImageByEs(search);
     }

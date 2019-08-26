@@ -94,14 +94,18 @@ public class ImageServiceImpl implements ImageService {
                         return null;
                     }
 
-                    String highlightString = hit.getHighlightFields().get("tag").fragments()[0].toString();
                     Image image = new Image();
                     image.setId(Integer.parseInt(hit.getId()));
                     image.setUrl(String.valueOf(hit.getSource().get("url")));
                     image.setDescription(String.valueOf(hit.getSource().get("description")));
                     image.setType(Integer.parseInt(String.valueOf(hit.getSource().get("type"))));
-                    image.setTag(highlightString);
+                    image.setTag(String.valueOf(hit.getSource().get("tag")));
 
+                    //防止标签不存在，描述存在的问题
+                    if (hit.getHighlightFields().size()!=0) {
+                        String highlightString = hit.getHighlightFields().get("tag").fragments()[0].toString();
+                        image.setTag(highlightString);
+                    }
                     imageTemp.add(image);
                 }
                 return new AggregatedPageImpl<>((List<T>)imageTemp);

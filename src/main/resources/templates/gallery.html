@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+	<link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/gallery.css"/>
+</head>
+<body class="fullscreen">
+	<div class="search-block-out">
+		<div class="am-topbar-form am-form-inline">
+			<div class="am-form-group search-block">
+				<span class="am-icon-search"></span>
+				<input type="text" placeholder="搜索" class="searchText am-form-field am-input-sm">
+			</div>
+		</div>
+
+	</div>
+	<div id="gallery" class="fullscreen"></div>
+	<div id="nav" class="navbar">
+	    <span id="preview"><i class="blog-icon">&#xe641;</i></span>
+		<span id="next"><i class="blog-icon">&#xe642;</i></span>
+
+	</div>
+	
+	
+
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/gallery.js"></script>
+	<script>
+	    window.onload = function () {
+			new polaroidGallery("/getBgAllImages");
+	    }
+
+        $(".searchText").keydown(function (event) {
+            var search;
+            if (event.which == 13) {
+                search = $(".searchText").val()
+				temp = new polaroidGallery("/searchImageByEs?search="+search);
+            }
+        })
+	</script>
+</body>
+</html>

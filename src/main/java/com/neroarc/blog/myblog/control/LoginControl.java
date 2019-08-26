@@ -53,4 +53,14 @@ public class LoginControl {
     public String daily(){
         return "daily";
     }
+
+    @RequestMapping("/space")
+    public String space(){
+        return "space";
+    }
+
+    @RequestMapping("/gallery")
+    public String gallery() {
+        return "gallery";
+    }
 }
