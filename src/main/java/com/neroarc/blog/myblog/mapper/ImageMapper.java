@@ -4,6 +4,7 @@ import com.neroarc.blog.myblog.model.Image;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,6 +26,15 @@ public interface ImageMapper {
      */
     @Insert("insert into image(url,type,tag,description) values(#{url},#{type},#{tag},#{description})")
     int addBgImage(Image image);
+
+
+    /**
+     * 更新图片
+     * @param image
+     * @return
+     */
+    @Update("update image set url=#{url},type=#{type},tag=#{tag},description=#{description} where id=#{id}")
+    int updateBgImage(Image image);
 
     /**
      * 得到所有的背景图片

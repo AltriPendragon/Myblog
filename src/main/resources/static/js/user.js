@@ -170,6 +170,7 @@ $(document).on("change","#upload-headImg",function () {
 })
 
 
+//友链事件
 $(document).on("click",".link-edit-save-btn",function () {
 
     var nickname = $("#nickname").val();
@@ -321,7 +322,7 @@ $(document).on("click",".btn-link-edit",function () {
 })
 
 $(document).on("click",".link-btn-add",function () {
-    $("add-1").val("");//清空input的值
+    $("#add-1").val("");//清空input的值
     var $modal = $('#add-1');
     $modal.modal();
 })
@@ -364,6 +365,167 @@ $(document).on("click",".btn-link-delete",function () {
 
 
 })
+
+
+
+//图片事件
+$(document).on("click",".image-edit-save-btn",function () {
+
+    var tag = $("#tag").val();
+    var description = $("#description").val();
+    var url = $("#bgUrl").val();
+    var type = $("#bgType").val();
+
+    alert(editId)
+
+    $.ajax({
+        type:"get",
+        url:"/updateImage",
+        dataType:"json",
+        data:{
+            tag:tag,
+            description:description,
+            url:url,
+            type:type,
+            id:editId
+        },
+
+        success:function (data) {
+            if(data['status']==200){
+                layer.alert('更新成功',{
+                    icon:1,
+                    skin: 'layer-ext-moon'
+                })
+            }
+
+            else {
+                layer.alert('更新失败',{
+                    icon:2,
+                    skin: 'layer-ext-moon'
+                })
+
+            }
+
+            // window.location.reload()
+        }
+    })
+
+
+})
+$(document).on("click",".image-item-add",function () {
+    var tag = $("input[name='tag']").val()
+    var description = $("input[name='description']").val()
+    var url = $("input[name='bgUrl']").val()
+    var type = $("input[name='bgType']").val()
+
+    $.ajax({
+        type:"get",
+        url:"/addImage",
+        dataType:"json",
+        data:{
+            tag:tag,
+            description:description,
+            url:url,
+            type:type
+        },
+
+        success:function (data) {
+            if(data['status']==200){
+                layer.alert('更新成功',{
+                    icon:1,
+                    skin: 'layer-ext-moon'
+                })
+            }
+
+            else {
+                layer.alert('更新失败',{
+                    icon:2,
+                    skin: 'layer-ext-moon'
+                })
+
+            }
+
+            window.location.reload()
+        }
+    })
+})
+$(document).on("click",".btn-image-edit",function () {
+
+    var id = $(this).parent().parent().parent().parent().children(".image-id").text();
+    var $modal = $('#image-edit-1');
+    $.ajax({
+        type:"get",
+        url:"/getBgImageById",
+        dataType:"json",
+        data:{
+            id:id
+        },
+
+        success:function (data) {
+            editId = data['id'];
+            if(data['status']==200){
+                var temp = '<div class="am-modal-dialog">\n' +
+                    '                                        <div class="am-modal-hd">图片\n' +
+                    '                                            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>\n' +
+                    '                                        </div>\n' +
+                    '                                        <form class="am-form am-form-horizontal">\n' +
+                    '                                            <div class="am-form-group image-item-edit">\n' +
+                    '                                                <label class="am-u-md-3">Tag</label>\n' +
+                    '                                                <div class="am-u-sm-9">\n' +
+                    '                                                    <input id="tag" type="text" placeholder="标签" value="'+data['tag']+'">\n' +
+                    '                                                </div>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="am-form-group image-item-edit">\n' +
+                    '                                                <label class="am-u-md-3">描述</label>\n' +
+                    '                                                <div class="am-u-sm-9">\n' +
+                    '                                                    <input id="description" type="text" placeholder="描述" value="'+data['description']+'">\n' +
+                    '                                                </div>\n' +
+                    '                                            </div>\n' +
+                    '                                            <div class="am-form-group image-item-edit">\n' +
+                    '                                                <label class="am-u-md-3">URL</label>\n' +
+                    '                                                <div class="am-u-sm-9">\n' +
+                    '                                                    <input id="bgUrl" type="text" placeholder="URL" value="'+data['url']+'">\n' +
+                    '                                                </div>\n' +
+                    '                                            </div>\n' +
+                    '\n' +
+                    '                                            <div class="am-form-group image-item-edit">\n' +
+                    '                                                <label class="am-u-md-3">Type</label>\n' +
+                    '                                                <div class="am-u-sm-9">\n' +
+                    '                                                    <input id="bgType" type="text" placeholder="type" value="'+data['type']+'">\n' +
+                    '                                                </div>\n' +
+                    '                                            </div>\n' +
+                    '\n' +
+                    '                                            <div class="am-form-group image-item-edit">\n' +
+                    '                                                <div class="am-u-sm-9">\n' +
+                    '                                                    <button class="am-btn am-btn-primary image-edit-save-btn" type="button">保存修改</button>\n' +
+                    '                                                </div>\n' +
+                    '                                            </div>\n' +
+                    '                                        </form>\n' +
+                    '                                    </div>'
+
+
+                $(".image-edit-modal").empty();
+                $(".image-edit-modal").append(temp)
+                $modal.modal()
+            }
+
+            else {
+                layer.alert('获取失败',{
+                    icon:2,
+                    skin: 'layer-ext-moon'
+                })
+            }
+
+        }
+    })
+})
+
+$(document).on("click",".image-btn-add",function () {
+    $("#image-add-1").val("");//清空input的值
+    var $modal = $('#image-add-1');
+    $modal.modal();
+})
+
 
 
 $(".user-info-choice").on("click",function () {
@@ -438,6 +600,7 @@ $(".comment-information-choice").on("click",function () {
     $(".admin-leave-message").css("display","none");
     $(".admin-comment-information").css("display","none");
     $(".admin-link").css("display","none");
+    $(".admin-image").css("display","none");
     $(".comment-information").css("display","block");
     ajaxCommentFirst(0);
 })
@@ -502,6 +665,7 @@ $(".reply-choice").on("click",function () {
     $(".admin-leave-message").css("display","none");
     $(".admin-comment-information").css("display","none");
     $(".admin-link").css("display","none");
+    $(".admin-image").css("display","none");
     $(".reply-information").css("display","block");
     replyFirst(0);
 })
@@ -697,6 +861,7 @@ $(".admin-leave-message-choice").on("click",function () {
     $(".userInfo").css("display","none");
     $(".admin-comment-information").css("display","none");
     $(".admin-link").css("display","none");
+    $(".admin-image").css("display","none");
     $(".admin-leave-message").css("display","block");
     ajaxAdminLeaveMessageFirst(0);
 })
@@ -757,7 +922,7 @@ function ajaxAdminLinkFirst(index) {
                         '                                        <td>\n' +
                         '                                            <input type="checkbox">\n' +
                         '                                        </td>\n' +
-                        '                                        <td>1</td>\n' +
+                        '                                        <td>'+obj['id']+'</td>\n' +
                         '                                        <td class="link-id" style="display: none">'+obj['id']+'</td>\n' +
                         '                                        <td>'+obj['name']+'</td>\n' +
                         '                                        <td>'+obj['introduce']+'</td>\n' +
@@ -805,9 +970,121 @@ $(".admin-link-choice").on("click",function () {
     $(".userInfo").css("display","none");
     $(".admin-comment-information").css("display","none");
     $(".admin-leave-message").css("display","none");
+    $(".admin-image").css("display","none");
     $(".admin-link").css("display","block");
     ajaxAdminLinkFirst(0);
 })
+
+//获取图片
+function ajaxImageFirst(index) {
+    $.ajax({
+        type:"get",
+        url:"/getPageBgImages",
+        dataType:"json",
+        data:{
+            pageNum:index+1,
+            rows:10
+        },
+        success:function (data) {
+
+            var thead = '<thead>\n' +
+                '                                <tr>\n' +
+                '                                    <th class="table-check">\n' +
+                '                                        <input class="table-check-box" type="checkbox">\n' +
+                '                                    </th>\n' +
+                '                                    <th class="table-id">ID</th>\n' +
+                '                                    <th class="table-id">Tag</th>\n' +
+                '                                    <th class="table-id">描述</th>\n' +
+                '                                    <th class="table-id">URL</th>\n' +
+                '                                    <th class="table-id">操作</th>\n' +
+                '                                </tr>\n' +
+                '                                </thead>'
+
+            var tbody = '<tbody>\n' +
+                '                                </tbody>';
+
+            $(".admin-image .am-form .am-table").empty();
+
+            if(data['status']==200){
+
+                $(".admin-image .am-form .am-table").append(thead);
+                $(".admin-image .am-form .am-table").append(tbody);
+
+                if($("#Pagination").hasClass("pagination-css")==true){
+                    $("#Pagination").removeClass("pagination-css");
+                }
+                $("#Pagination").pagination(data['totalSize'], {
+                    num_edge_entries: 1, //边缘页数
+                    num_display_entries: 3, //主体页数
+                    load_first_page:false,
+                    callback: function (index) {
+                        ajaxImageFirst(index)
+                    },
+                    items_per_page:10,//每页显示1项
+                    current_page:index,
+                    prev_text : '<<',
+                    next_text : '>>',
+
+                });
+                $.each(data['result'],function (index, obj) {
+                    var item = ' <tr>\n' +
+                        '                                        <td>\n' +
+                        '                                            <input type="checkbox">\n' +
+                        '                                        </td>\n' +
+                        '                                        <td>'+obj['id']+'</td>\n' +
+                        '                                        <td class="image-id" style="display: none">'+obj['id']+'</td>\n' +
+                        '                                        <td>'+obj['tag']+'</td>\n' +
+                        '                                        <td>'+obj['description']+'</td>\n' +
+                        '                                        <td>'+obj['url']+'</td>\n' +
+                        '    \n' +
+                        '                                        <td>\n' +
+                        '                                            <div class="am-btn-toolbar">\n' +
+                        '                                                <div class="am-btn-group am-btn-group-xs">\n' +
+                        '                                                    <button class="am-btn am-btn-default am-text-secondary am-btn-xs btn-image-edit-delete btn-image-edit" type="button">\n' +
+                        '                                                        <span class="am-icon-pencil-square-o"></span>\n' +
+                        '                                                        编辑\n' +
+                        '                                                    </button>\n' +
+                        '    \n' +
+                        '                                                    <button class="am-btn am-btn-default am-text-danger am-hide-sm-only am-btn-xs btn-image-edit-delete btn-image-delete" type="button">\n' +
+                        '                                                        <span class="am-icon-trash-o"></span>\n' +
+                        '                                                        删除\n' +
+                        '                                                    </button>\n' +
+                        '    \n' +
+                        '    \n' +
+                        '    \n' +
+                        '                                                </div>\n' +
+                        '                                            </div>\n' +
+                        '                                        </td>\n' +
+                        '                                    </tr>'
+
+                    $(".admin-image .am-form tbody").append(item)
+                })
+            }
+
+            else {
+                if($("#Pagination").hasClass("pagination-css")==false){
+                    $("#Pagination").addClass("pagination-css");
+                }
+                $(".admin-image .am-form .am-table").append(no_data);
+            }
+
+
+
+        }
+    })
+}
+$(".admin-image-manage-choice").on("click",function () {
+    $(".reply-information").css("display","none");
+    $(".comment-information").css("display","none");
+    $(".userInfo").css("display","none");
+    $(".admin-comment-information").css("display","none");
+    $(".admin-leave-message").css("display","none");
+    $(".admin-link").css("display","none");
+    $(".admin-image").css("display","block");
+    ajaxImageFirst(0);
+})
+
+
 
 
 $(document).on("click",".user-info-btn",function () {

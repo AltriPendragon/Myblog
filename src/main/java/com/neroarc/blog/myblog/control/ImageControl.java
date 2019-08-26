@@ -6,6 +6,7 @@ import com.neroarc.blog.myblog.service.ImageService;
 import com.neroarc.blog.myblog.utils.DateUtil;
 import com.neroarc.blog.myblog.utils.FileUtil;
 import net.sf.json.JSONObject;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -85,13 +88,29 @@ public class ImageControl {
 
 
     @RequestMapping("/addImage")
-    int addBgImage(Image image){
+    public Map<String,Object> addBgImage(Image image){
         int flag = imageService.addBgImage(image);
+        Map<String,Object> statusMap = new HashMap<>(1);
         if (flag==0){
-            return 500;
+            statusMap.put("status", 500);
+            return statusMap;
         }
 
-        return 200;
+        statusMap.put("status", 200);
+        return statusMap;
+    }
+
+    @RequestMapping("/updateImage")
+    public Map<String, Object> updateBgImage(Image image) {
+        int flag = imageService.updateBgImage(image);
+        Map<String, Object> statusMap = new HashMap<>(1);
+        if (flag == 0) {
+            statusMap.put("status", 500);
+            return statusMap;
+        }
+
+        statusMap.put("status", 200);
+        return statusMap;
     }
 
 
@@ -109,8 +128,17 @@ public class ImageControl {
     }
 
     @RequestMapping("/getBgImageById")
-    Image getBgImageById(int id){
-        return imageService.getBgImageById(id);
+    JSONObject getBgImageById(int id){
+       Image image = imageService.getBgImageById(id);
+        JSONObject returnJson = new JSONObject();
+        if (image == null) {
+            returnJson.put("status", 404);
+            return returnJson;
+        }
+
+        returnJson = JSONObject.fromObject(image);
+        returnJson.put("status", 200);
+        return returnJson;
     }
 
 
@@ -127,5 +155,10 @@ public class ImageControl {
     @RequestMapping("/searchImageByEs")
     public List<Image> searchImageByEs(String search){
         return imageService.searchImageByEs(search);
+    }
+
+    @RequestMapping("/getPageBgImages")
+    public Map<String, Object> getPageBgImages(int rows, int pageNum) {
+        return imageService.getPageBgImage(rows, pageNum);
     }
 }

@@ -115,6 +115,13 @@
                                             <span>友链</span>
                                         </a>
                                     </li>
+
+                                    <li class="admin-image-manage-choice">
+                                        <a>
+                                            <i class="am-icon-angle-right"></i>
+                                            <span>图片</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
 
@@ -375,6 +382,38 @@
 
                     </div>
 
+
+                    <div class="admin-image am-animation-slide-right" style="display: none">
+                        <div class="background-title-item">
+                            <div class="background-title">
+                                <span class="am-icon-code"></span>
+                                图片
+                            </div>
+                        </div>
+                        <div class="am-g">
+                            <div class="am-u-md-6">
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group-xs am-btn-group">
+                                        <button class="am-btn am-btn-default am-btn-success image-btn-add" type="button">
+                                            <span class="am-icon-plus"></span>
+                                            新增
+                                        </button>
+                                        <button class="am-btn am-btn-default am-btn-danger image-btn-deleteAll" type="button">
+                                            <span class="am-icon-trash-o"></span>
+                                            删除
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="am-form">
+                            <table class="am-table table-main">
+
+                            </table>
+                        </form>
+
+                    </div>
+
                     <div id="Pagination" class="pagination"></div>
                     <div class="am-modal am-modal-no-btn edit-modal" tabindex="-1" id="edit-1">
                         <div class="am-modal-dialog">
@@ -449,6 +488,93 @@
                                 </div>
 
                                 <div class="am-form-group link-item-add">
+                                    <div class="am-u-sm-9">
+                                        <button class="am-btn am-btn-primary" type="button">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class="am-modal am-modal-no-btn image-edit-modal" tabindex="-1" id="image-edit-1">
+                        <div class="am-modal-dialog">
+                            <div class="am-modal-hd">友链
+                                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                            </div>
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">Tag</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="tag" type="text" placeholder="Tag">
+                                    </div>
+                                </div>
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">描述</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="description" type="text" placeholder="description">
+                                    </div>
+                                </div>
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">URL</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="bgUrl" type="text" placeholder="URL">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">Type</label>
+                                    <div class="am-u-sm-9">
+                                        <input id="bgType" type="text" placeholder="Type">
+                                    </div>
+                                </div>
+
+
+                                <div class="am-form-group image-item-edit">
+                                    <div class="am-u-sm-9">
+                                        <button class="am-btn am-btn-primary" type="button">保存修改</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                    <div class="am-modal am-modal-no-btn image-add-modal" tabindex="-1" id="image-add-1">
+                        <div class="am-modal-dialog">
+                            <div class="am-modal-hd">图片
+                                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+                            </div>
+                            <form class="am-form am-form-horizontal">
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">Tag</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="tag" type="text" placeholder="Tag">
+                                    </div>
+                                </div>
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">描述</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="description" type="text" placeholder="description">
+                                    </div>
+                                </div>
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">URL</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="bgUrl" type="text" placeholder="URL">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group image-item-edit">
+                                    <label class="am-u-md-3">Type</label>
+                                    <div class="am-u-sm-9">
+                                        <input name="bgType" type="text" placeholder="Type">
+                                    </div>
+                                </div>
+
+
+                                <div class="am-form-group image-item-add">
                                     <div class="am-u-sm-9">
                                         <button class="am-btn am-btn-primary" type="button">保存</button>
                                     </div>

@@ -304,6 +304,16 @@ ul,li{
     font-size: 18px;
 }
 
+.admin-image{
+    border: 1px solid #e7ecf1;
+    padding: 12px 20px 15px;
+    background-color: #fff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    overflow: hidden;
+    font-size: 18px;
+}
+
 .reply-information{
     border: 1px solid #e7ecf1;
     padding: 12px 20px 15px;
@@ -489,6 +499,11 @@ tbody > tr:nth-child(2n+1) > td{
 }
 
 .link-btn-deleteAll{
+    color: #fff;
+    background-color: #d93c37;
+}
+
+.image-btn-deleteAll{
     color: #fff;
     background-color: #d93c37;
 }

@@ -1,5 +1,7 @@
 package com.neroarc.blog.myblog.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.neroarc.blog.myblog.mapper.ImageMapper;
 import com.neroarc.blog.myblog.model.Image;
 import com.neroarc.blog.myblog.service.ImageService;
@@ -21,7 +23,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: fjx
@@ -107,5 +111,32 @@ public class ImageServiceImpl implements ImageService {
 
         List<Image> imagesContent = images.getContent();
         return imagesContent;
+    }
+
+
+    @Override
+    public Map<String,Object> getPageBgImage(int rows, int pageNum) {
+        PageHelper.startPage(pageNum,rows);
+        List<Image> images = imageMapper.getBgAllImages();
+
+        if (images.size() == 0) {
+            Map<String, Object> empty = new HashMap<>(1);
+            empty.put("status", 404);
+            return empty;
+        }
+
+        Map<String,Object> returnMap = new HashMap<>(images.size()+4);
+        PageInfo<Image> pageInfo = new PageInfo<>(images);
+        returnMap.put("result",images);
+        returnMap.put("totalPage",pageInfo.getPages());
+        returnMap.put("totalSize",pageInfo.getTotal());
+        returnMap.put("num",pageInfo.getPageNum());
+        returnMap.put("status", 200);
+        return returnMap;
+    }
+
+    @Override
+    public int updateBgImage(Image image) {
+        return imageMapper.updateBgImage(image);
     }
 }

@@ -1,11 +1,13 @@
 package com.neroarc.blog.myblog.service;
 
 import com.neroarc.blog.myblog.model.Image;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.Size;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: fjx
@@ -65,4 +67,19 @@ public interface ImageService {
     * @return
     */
    List<Image> searchImageByEs(String search);
+
+   /**
+    * 分页得到图片
+    * @param rows
+    * @param pageNum
+    * @return
+    */
+   Map<String,Object> getPageBgImage(int rows, int pageNum);
+
+   /**
+    * 更新背景图片
+    * @param image
+    * @return
+    */
+   int updateBgImage(Image image);
 }
