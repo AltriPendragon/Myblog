@@ -533,6 +533,7 @@ $(".user-info-choice").on("click",function () {
     $(".admin-leave-message").css("display","none");
     $(".admin-comment-information").css("display","none");
     $(".admin-link").css("display","none");
+    $(".admin-image").css("display","none");
     if($("#Pagination").hasClass("pagination-css")==false){
         $("#Pagination").addClass("pagination-css");
     }
