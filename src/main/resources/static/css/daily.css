@@ -161,7 +161,6 @@ body {
 
 .am-pagination{
     text-align: center;
-    height: 0px;
 }
 
 .am-pagination span:hover{
@@ -170,4 +169,8 @@ body {
 
 .disabled{
     display: none !important;
+}
+
+article{
+    z-index: 11;
 }

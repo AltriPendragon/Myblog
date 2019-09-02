@@ -3,42 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Altri | Daily</title>
     <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
     <link href="../static/css/daily.css" th:href="@{/css/daily.css}" rel="stylesheet">
 </head>
 <body>
     <div class="am-g" ng-app="articleApp" ng-controller="articleControl">
     <div class="am-u-md-2"><p style="visibility: hidden">1</p></div>
-    <div class="am-u-md-8"  ng-init="getPageArticles(10,1)">
-        <article class="daily-list daily-list-show" ng-repeat="article in articles">
-            <div class="daily-thumb">
-                <a>
-                    <img ng-src="{{getImage($index)}}" >
-                    {{$index}}
-                </a>
-            </div>
-            <div class="daily-content-wrap">
-                <div class="daily-content">
-                    <div class="post-date">
-                        <i class="blog-icon">&#xe601;</i>
-                        发布于 {{article.createTime}}
-                    </div>
-                    <a href="/article/{{article.articleId}}"><h3>{{article.title}}</h3></a>
-                    <div class="post-meta">
-                        <span class="article-category"><i class="blog-icon">&#xe602;</i><a href="/category/?category={{article.category}}">{{article.category}}</a></span>
-                        <span class="article-tags" ng-repeat="articleTag in article.tags.split(',')"><i class="am-icon-tags"></i><a href="/tag/?tag={{articleTag}}">{{articleTag}}</a></span>
-                    </div>
-                    <div class="float-content">
-                        <p>{{article.summary}}</p>
-                        <div class="post-bottom">
-                            <i class="blog-icon">&#xe683;</i>
+    <div class="am-u-md-8">
+        <div ng-init="getPageArticles(10,1)">
+            <article class="daily-list daily-list-show" ng-repeat="article in articles">
+                <div class="daily-thumb">
+                    <a>
+                        <img ng-src="{{getImage($index)}}" >
+                        {{$index}}
+                    </a>
+                </div>
+                <div class="daily-content-wrap">
+                    <div class="daily-content">
+                        <div class="post-date">
+                            <i class="blog-icon">&#xe601;</i>
+                            发布于 {{article.createTime}}
+                        </div>
+                        <a href="/article/{{article.articleId}}"><h3>{{article.title}}</h3></a>
+                        <div class="post-meta">
+                            <span class="article-category"><i class="blog-icon">&#xe602;</i><a href="/category/?category={{article.category}}">{{article.category}}</a></span>
+                            <span class="article-tags" ng-repeat="articleTag in article.tags.split(',')"><i class="am-icon-tags"></i><a href="/tag/?tag={{articleTag}}">{{articleTag}}</a></span>
+                        </div>
+                        <div class="float-content">
+                            <p>{{article.summary}}</p>
+                            <div class="post-bottom">
+                                <i class="blog-icon">&#xe683;</i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        <div><tm-pagination conf="paginationConf" ng-show="pageShow"></tm-pagination></div>
+            </article>
+        </div>
+        <div><tm-pagination conf="paginationConf" ng-show="pageShow" ></tm-pagination></div>
     </div>
     <div class="am-u-md-2"><p style="visibility: hidden">1</p></div>
 </div>

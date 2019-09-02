@@ -159,6 +159,7 @@ public class UserServiceImpl implements UserService {
                 jsonArray.add(jsonObject);
             }
 
+
             returnJson.put("status",200);
             returnJson.put("result",jsonArray);
             returnJson.put("totalSize",pageInfo.getTotal());
