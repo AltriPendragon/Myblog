@@ -154,7 +154,6 @@
                         uploadIframe.onload = function() {
 
                             loading(false);
-
                             var body = (uploadIframe.contentWindow ? uploadIframe.contentWindow : uploadIframe.contentDocument).document.body;
                             var json = (body.innerText) ? body.innerText : ( (body.textContent) ? body.textContent : null);
 

@@ -46,8 +46,7 @@ public class ImageControl {
         img = img.substring(index + 8);
         String filePath = this.getClass().getResource("/").getPath().substring(1) + "userImg/";
         FileUtil fileUtil = new FileUtil();
-        DateUtil dateUtil = new DateUtil();
-        String time = Long.toString(dateUtil.getLongTime());
+        String time = Long.toString(DateUtil.getLongTime());
         File file = fileUtil.base64ToFile(filePath,img,time+strFileExtendName);
 
         String returnStr = imageService.uploadImage(file,principal.getName()+"/headImg");

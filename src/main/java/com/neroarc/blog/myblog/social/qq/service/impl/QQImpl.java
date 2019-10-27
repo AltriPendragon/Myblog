@@ -32,7 +32,6 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 
 
     private ObjectMapper objectMapper = new ObjectMapper();
-    DateUtil dateUtil = new DateUtil();
     User user = new User();
 
     public QQImpl(String accessToken,String appId){
@@ -61,7 +60,7 @@ public class QQImpl extends AbstractOAuth2ApiBinding implements QQ {
 
 
         user.setProviderId(openId);
-        user.setRecentLoginDate(dateUtil.getStringTime());
+        user.setRecentLoginDate(DateUtil.getStringTime());
 
 
         if(userMapper.isUserExist(openId)==0){

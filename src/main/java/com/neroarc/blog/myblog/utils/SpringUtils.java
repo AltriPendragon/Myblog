@@ -20,7 +20,7 @@ public class SpringUtils implements ApplicationContextAware {
     @SuppressWarnings("static-access")
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        SpringUtils.applicationContext = applicationContext;
     }
 
     public static ApplicationContext getApplicationContext() {

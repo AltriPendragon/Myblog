@@ -61,11 +61,11 @@ public class DateUtil {
 
 
    public static void main(String args[]) throws ParseException {
-        DateUtil dateUtil = new DateUtil();
-        dateUtil.getLongTime();
-        dateUtil.getStringTime();
-        dateUtil.changeTimeByLong(27632632);
-        dateUtil.changeTimeByString("2018-09-11 21:20:19");
+
+        DateUtil.getLongTime();
+        DateUtil.getStringTime();
+        DateUtil.changeTimeByLong(27632632);
+        DateUtil.changeTimeByString("2018-09-11 21:20:19");
 
    }
 }
