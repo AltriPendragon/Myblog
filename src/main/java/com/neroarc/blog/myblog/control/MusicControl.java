@@ -50,10 +50,10 @@ public class MusicControl {
             }
 
             int lastArtist = artistBuffer.lastIndexOf("/");
-            itemJson.put("author", artistBuffer.toString().substring(0, lastArtist - 1));
+            itemJson.put("author", artistBuffer.toString().substring(0, lastArtist));
 
-            //清空旧字符
-            artistBuffer.delete(0, lastArtist);
+            //清空旧字符,注意+1
+            artistBuffer.delete(0, lastArtist+1);
             returnJsonArray.add(itemJson);
 
         }
