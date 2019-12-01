@@ -86,7 +86,7 @@ function checkPhone(){
         return false;
     }
 
-    if(!(/^1[34578]\d{9}$/.test(phone))){
+    if(!(/^1[345789]\d{9}$/.test(phone))){
         layer.alert('电话格式错误',{
             icon:2,
             skin: 'layer-ext-moon'
