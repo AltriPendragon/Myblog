@@ -64,7 +64,7 @@ public class MusicControl {
 
     @RequestMapping("/music/getMusicUrl")
     public Object getMusicDetail(String id) {
-        String url = "http://music.163.com/api/song/enhance/player/url?ids=["+id+"]&br=320000";
+        String url = "http://music.163.com/api/song/enhance/player/url?ids=["+id+"]&br=999000";
         RestTemplate restTemplate = new RestTemplate();
         String body = restTemplate.getForEntity(url, String.class).getBody();
         JSONArray resultJsonArray = (JSONArray) (JSONObject.fromObject(body).get("data"));

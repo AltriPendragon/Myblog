@@ -23,7 +23,7 @@ public interface TagsMapper {
      * @param tag
      * @return
      */
-    @Select("select article_id,author,left(create_time,10) create_time,title,category,tags from article where tags like concat('%',#{tag},'%')")
+    @Select("select article_id,author,left(create_time,10) create_time,title,category,tags from article where tags like concat('%',#{tag},'%') order by create_time desc")
     List<Article> getArticlesByTag(String tag);
 
     /**

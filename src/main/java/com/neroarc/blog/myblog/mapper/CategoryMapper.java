@@ -23,7 +23,7 @@ public interface CategoryMapper {
      * @param category
      * @return
      */
-    @Select("select article_id,author,left(create_time,10) create_time,title,category,tags from article where category = #{category}")
+    @Select("select article_id,author,left(create_time,10) create_time,title,category,tags from article where category = #{category} order by create_time desc")
     List<Article> getArticleByCategory(String category);
 
     /**
