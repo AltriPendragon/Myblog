@@ -73,8 +73,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getTelephoneCode(String telephone) {
 
+        int userExist = userMapper.isUserExist(telephone);
         int code = (int)(Math.random()*9000)+1000;
         int flag = 1;
+
+        if (userExist != 0) {
+            flag = 0;
+            return flag;
+        }
+
         try {
             SendSmsResponse sendSmsResponse = SmsUtils.sendSms(telephone,Integer.toString(code));
             RedisUtil.putValue(telephone,Integer.toString(code),300);

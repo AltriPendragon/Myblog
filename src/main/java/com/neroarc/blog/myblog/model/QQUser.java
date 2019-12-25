@@ -89,5 +89,8 @@ public class QQUser {
      */
     private String is_yellow_year_vip;
 
+    /**
+     * 性别,1,0表示
+     */
     private int gender_type;
 }
