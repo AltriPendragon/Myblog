@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Altri | 登录</title>
-    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/amazeui@2.7.2/dist/css/amazeui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
 </head>
 <body id="login">
@@ -74,7 +74,8 @@
                         </div>
 
                         <div class="reset-password-container">
-                            <a href="https://graph.qq.com/oauth/show?which=Login&display=pc&response_type=code&client_id=101579617&redirect_uri=https://www.neroarc.cn/qq/login" class="login-qq">QQ登录</a>
+                            <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101579617&redirect_uri=https://www.neroarc.cn/qq/login" class="login-qq">QQ登录</a>
+                            <!--<a href="https://graph.qq.com/oauth/show?which=Login&display=pc&response_type=code&client_id=101579617&redirect_uri=https://www.neroarc.cn/qq/login" class="login-qq">QQ登录</a>-->
                             <!--<a href="https://graph.qq.com/oauth/show?which=Login&display=pc&response_type=code&client_id=101500101&redirect_uri=http://localhost/test/dologin" class="login-qq">QQ登录</a>-->
                             <a href="#" class="lost-password">忘记密码</a>
                             <a href="#" class="sign-in">注册</a>
@@ -93,8 +94,8 @@
         </p>
     </footer>
 </body>
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/layer/2.1/layer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.1.1/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/layer/2.1/layer.js"></script>
 <!--<script src="../static/layer/layer.js" th:src="@{/layer/layer.js}"></script>-->
 <script src="../static/js/login.js" th:src="@{/js/login.js}"></script>
 </html>
