@@ -73,7 +73,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 .img-bgr:before{
-    background-image: url("https://ae01.alicdn.com/kf/Ha46354185c2f49f4bf5f7f2bb1b1ae28Q.gif");
+    background-image: url("https://fjxblog.oss-cn-shenzhen.aliyuncs.com/user/1/blogImg/dot.gif");
     content: '';
     position: absolute;
     top: 0;
