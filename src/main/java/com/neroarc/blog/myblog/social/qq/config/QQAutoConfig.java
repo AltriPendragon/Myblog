@@ -40,7 +40,7 @@ public class QQAutoConfig extends SocialAutoConfigurerAdapter {
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
         JdbcUsersConnectionRepository jdbcUsersConnectionRepository = new JdbcUsersConnectionRepository(dataSource,connectionFactoryLocator, Encryptors.noOpText());
-       jdbcUsersConnectionRepository.setConnectionSignUp(connectionSignUp);
+        jdbcUsersConnectionRepository.setConnectionSignUp(connectionSignUp);
         return jdbcUsersConnectionRepository;
     }
 

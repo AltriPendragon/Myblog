@@ -59,6 +59,30 @@ public interface UserMapper {
     int updateTime(User user);
 
     /**
+     * 更新用户昵称和头像
+     * @param user
+     * @return
+     */
+    @Update("update user set name = #{name}, image_url = #{imageUrl} where provider_id=#{providerId}")
+    int updateUserNameOrImageUrl(User user);
+
+    /**
+     * 选择性的更新用户数据
+     * @param user
+     * @return
+     */
+    @Update("<script>" +
+            "update user " +
+            "<set>" +
+            "    <if test='recentLoginDate != null'> recent_login_date = #{recentLoginDate},</if>" +
+            "    <if test='name != null'> name = #{name},</if>" +
+            "    <if test='imageUrl != null'>image_url = #{imageUrl},</if>" +
+            "</set>" +
+            "WHERE provider_id = #{providerId}" +
+            "</script>")
+    int selectiveUpdateUser(User user);
+
+    /**
      * 更新密码
      * @param user
      * @return
